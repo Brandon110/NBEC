@@ -1,0 +1,34 @@
+.profile-wrapper {
+  background: -webkit-linear-gradient(top, #f2f2f2 50% , white 50%);
+  background: -o-linear-gradient(right, #f2f2f2 50%, white 50%);
+  background: -moz-linear-gradient(bottom, #f2f2f2 50%, white 50%);
+  background: linear-gradient(to bottom, #f2f2f2 50% , white 50%);
+}
+
+.profile-img {
+    height: 200px;
+    width: 200px;
+}
+
+.remove-profile-img-btn {
+    color: red;
+}
+
+.remove-profile-img-btn:hover {
+    border: 1px red solid;
+}
+
+.edit-profile-form-wrapper {
+    width: 50%;
+    margin: 0 auto;
+}
+
+@media (max-width: 700px) {
+    .edit-profile-form-wrapper {
+        width: 100%;
+    }
+    
+    .profile-header {
+        justify-content: center;
+    }
+}

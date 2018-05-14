@@ -1,0 +1,10 @@
+.topic-section-title {
+    background-color: #7f7fff;
+    color: white;
+}
+
+@media(max-width: 700px) {
+    .thread-wrapper {
+        flex-wrap: wrap;
+    }
+}

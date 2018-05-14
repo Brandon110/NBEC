@@ -1,0 +1,48 @@
+nav {
+    font-family: sans-serif;
+}
+
+.header-title {
+    font-size: 35px;
+    color: black;
+    font-weight: bold;
+}
+
+.header-title:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.header-link {
+    text-decoration: none;
+    padding: 11px 16px;
+    color: grey;
+}
+
+.header-link:hover {
+    background-color: #e5e5ff;
+    color: grey;
+    text-decoration: none;
+}
+
+.active {
+    background-color: silver !important;
+}
+
+.dropdown-nav {
+    display: none;
+}
+ 
+.dropdown-icon {
+    font-size: 25px;
+}
+
+@media (max-width: 700px) {
+    .dropdown-nav {
+        display: block;
+    }
+    
+    .main-nav {
+        display: none;
+    }
+}
