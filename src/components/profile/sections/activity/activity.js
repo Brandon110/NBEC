@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink, Link } from 'react-router-dom'
 
 class Activities extends Component {
     render() {
@@ -11,7 +12,12 @@ class Activities extends Component {
                         <li className='list-group-item text-center'>No recent activity to show</li>
                         :
                         activities.map((activity, index) => {
-                            return <li key={index} className='list-group-item'>{activity.action}</li>
+                            return <li key={index}
+                             className='list-group-item'>
+                             <small>{activity.date}</small> {' '}
+                              {activity.action} {' '}
+                              <NavLink to={activity.url}>{activity.title}</NavLink>
+                             </li>
                         })
                 }
             </ul>

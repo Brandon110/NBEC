@@ -1,6 +1,7 @@
 const forumsCollection = require('../models/forums');
 const getTodaysDate = require('../helper_functions/getTodaysDate');
 const userCollection = require('../models/users');
+const activity = require('../activity/index');
 
 module.exports = function (app) {
     app.get('/posts/:topic', (req, res) => {
@@ -26,7 +27,7 @@ module.exports = function (app) {
             res.send({ status: 'error', msg: 'exceeded character length' });
         }
         else {
-            userCollection.findOne({ '_id': req.user }, (err, user) => {
+            userCollection.findOne({ 'userId': req.user }, (err, user) => {
                 if (err) return err;
 
                 let thread = new forumsCollection({
@@ -39,6 +40,11 @@ module.exports = function (app) {
 
                 thread.save(err => {
                     if (err) return err;
+                    const title = thread.title;
+                    const url = '/forums/'+thread.topic+'/'+thread._id;
+                    const action = 'Posted thread';
+                    activity(title, url, action, req, app.io);
+
                     res.send({ status: 'success', msg: 'successful', id: thread._id });
                 });
             });
