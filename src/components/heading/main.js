@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
-class MainHeader extends Component {
+class MainHeader extends Component {   
     renderMainHeaderMenu() {
         let user = this.props.user;
 
@@ -9,7 +9,7 @@ class MainHeader extends Component {
             return false;
         }
         else if (user) {
-            return <div className='mr-5'>
+            return <div className='mr-5 d-flex'>
                 <NavLink to='/profile/activity' activeClassName='active'>{user.firstName + ' ' + user.lastName}</NavLink>
             </div>
         }
@@ -19,7 +19,7 @@ class MainHeader extends Component {
             </div>
         }
     }
-
+     
     render() {
         return (
             <nav className='main-nav'>
