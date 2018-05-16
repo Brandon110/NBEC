@@ -21,13 +21,13 @@ class Posts extends Component {
 
     fetchPosts() {
         axios.get('/posts/' + this.props.match.params.topic).then(function (response) {
-            this.setState({ posts: response.data });
+                this.setState({ posts: response.data });
         }.bind(this))
             .catch(err => {
                 return err;
             });
     }
-
+ 
     renderPosts() {
         let posts = this.state.posts;
 
@@ -55,8 +55,12 @@ class Posts extends Component {
                             {
                                 post.comments[0] ?
                                     <div>
-                                        <p>{post.comments[0].author}</p>
-                                        <small className='text-muted'>{post.comments[0].datePosted}</small>
+                                        <NavLink 
+                                        to={'/live-profile/activity/'+post.comments[0].userId}>
+                                        {post.comments[0].name}
+                                        </NavLink>
+                                        <br/>
+                                        <small className='text-muted'>{post.comments[0].date}</small>
                                     </div>
                                     :
                                     <small>No posts</small>
@@ -67,7 +71,7 @@ class Posts extends Component {
             })
         }
     }
-
+     
     render() {
         let user = this.props.user;
 
