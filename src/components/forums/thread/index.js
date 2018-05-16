@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Parser from 'html-react-parser';
 import Alert from '../../alerts/no_data';
+import AddComment from '../comments/add_comment';
 import { NavLink, Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -50,11 +51,11 @@ class Thread extends Component {
         }
         else {
             return (
-                <div className='container-fluid'>
+                <div className='container'>
 
                     <h1 className='text-center'>{thread.title}</h1>
 
-                    <div className='d-flex white-background flex-1 p-1 thread-wrapper'>
+                    <div className='d-flex white-background flex-1 p-1 thread-wrapper border'>
 
                         <div className='d-flex flex-column align-items-center mr-2'>
                             <img className='profile-img' src={user.profileImg} />
@@ -72,6 +73,13 @@ class Thread extends Component {
                         </div>
                     </div>
 
+                    <div className='mt-5'>
+                        <h5>Comments {thread.comments.length}</h5>
+                        <AddComment 
+                        thread={thread} 
+                        fetchThread={this.fetchThread.bind(this)}
+                        />
+                    </div>
                 </div>
 
             )

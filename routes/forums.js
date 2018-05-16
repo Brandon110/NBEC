@@ -41,7 +41,7 @@ module.exports = function (app) {
                 thread.save(err => {
                     if (err) return err;
                     const title = thread.title;
-                    const url = '/forums/'+thread.topic+'/'+thread._id;
+                    const url = '/forums/' + thread.topic + '/' + thread._id;
                     const action = 'Posted thread';
                     activity(title, url, action, req, app.io);
 
@@ -68,5 +68,38 @@ module.exports = function (app) {
 
             res.send(thread);
         });
+    });
+
+    app.post('/activity/add-thread-comment', (req, res) => {
+        const threadId = req.body.threadId;
+        const comment = req.body.comment;
+
+        if (!comment) {
+            res.send({ status: 'error', msg: 'null comment' })
+        }
+        else {
+            userCollection.findOne({ 'userId': req.user }, (err, user) => {
+                if (err) return err;
+
+                forumsCollection.findOne({ '_id': threadId }, (err, thread) => {
+                    if (err) return err;
+
+                    let obj = {};
+
+                    obj.userId = req.user;
+                    obj.name = user.firstName + ' ' + user.lastName;
+                    obj.text = comment;
+                    obj.date = getTodaysDate();
+                
+                    thread.comments.unshift(obj);
+
+                    thread.save(err => {
+                        if (err) return err;
+
+                        return res.send({ status: 'success', msg: 'successful' });
+                    });
+                });
+            });
+        }
     });
 }

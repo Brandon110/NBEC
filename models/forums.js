@@ -11,6 +11,7 @@ const forumsSchema = new Schema({
     likes: Array,
     comments: [{
         name: String,
+        userId: String, 
         text: String,
         date: String,
         likes: Array
