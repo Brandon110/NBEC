@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import LastPost from '../main/last_post';
-import NumberOfThreads from '../main/number_of_threads';
+import LastPost from './main/last_post';
+import NumberOfThreads from './main/number_of_threads';
 import { NavLink, Link } from 'react-router-dom';
 
 class OffTopic extends Component {

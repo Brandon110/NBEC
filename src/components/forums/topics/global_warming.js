@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import LastPost from '../main/last_post';
-import NumberOfThreads from '../main/number_of_threads';
+import LastPost from './main/last_post';
+import NumberOfThreads from './main/number_of_threads';
 import { NavLink, Link } from 'react-router-dom';
 import axios from 'axios';
 
