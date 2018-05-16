@@ -42,7 +42,7 @@ class AddComment extends Component {
                 }
 
                 Alert.alertClass = alertClass;
-                 console.log(data.msg);
+           
                 switch (data.msg) {
                     case 'null comment':
                         Alert.msg = 'Please type your comment before submitting';
