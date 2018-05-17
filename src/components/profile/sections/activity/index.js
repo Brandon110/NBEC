@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchUser } from '../../../../actions/fetch_user';
-import { fetchUserPosts } from '../../../../actions/fetch_user_posts';
 import ProfileNav from '../../main/profile_navigation';
 import ProfileInfo from '../../main/profile_info';
 import Activity from './activity';
@@ -25,7 +24,7 @@ class ProfilePage extends Component {
 
                             <ProfileNav />
 
-                            <Activity user={user} />
+                            <Activity user={user} fetchUser={this.props.fetchUser}/>
                         </div>
                 }
             </main>
@@ -35,13 +34,12 @@ class ProfilePage extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        user: state.user,
-        posts: state.posts
+        user: state.user
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({ fetchUser, fetchUserPosts }, dispatch);
+    return bindActionCreators({ fetchUser }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);

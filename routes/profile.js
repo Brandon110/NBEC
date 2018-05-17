@@ -108,7 +108,7 @@ module.exports = function (app) {
             data.birthDate = user.birthDate;
             data.profileImg = user.profileImg;
             data.dateJoined = user.dateJoined;
-            data.activitiy = user.activity;
+            data.activity = user.activity;
             data.userId = user.userId;
 
             forumCollection.find({ 'author.userId': user.userId }, (err, posts) => {

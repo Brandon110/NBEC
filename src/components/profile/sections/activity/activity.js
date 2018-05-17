@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom';
+import Parser from 'html-react-parser';
 
 class Activities extends Component {
+    componentDidMount() {
+        this.props.fetchUser();
+    }
+
     render() {
         let activities = this.props.user.activity;
 
@@ -13,11 +18,11 @@ class Activities extends Component {
                         :
                         activities.map((activity, index) => {
                             return <li key={index}
-                             className='list-group-item'>
-                             <small>{activity.date}</small> {' '}
-                              {activity.action} {' '}
-                              <NavLink to={activity.url}>{activity.title}</NavLink>
-                             </li>
+                                className='list-group-item'>
+                                <small>{activity.date}</small> {' '}
+                                {activity.action} {' '}
+                                <NavLink to={activity.url}>{activity.title}</NavLink>
+                            </li>
                         })
                 }
             </ul>

@@ -1,12 +1,22 @@
-const mongoose = require('mongoose');
-const getTodaysDate = require('../helper_functions/getTodaysDate');
 const userCollection = require('../models/users');
 
-function activity(title, url, action, req, io) {
-    userCollection.findOneAndUpdate({ 'userId': req.user },
-        { $push: { 'activity': { title, url, action, date: getTodaysDate() } } }, { new: true }, (err, updated) => {
+const addActivity = (action, url, title, date, req) => {
+    userCollection.findOne({ 'userId': req.user }, (err, user) => {
+        if (err) return err;
+
+        let newActivity = {};
+
+        newActivity.action = action;
+        newActivity.url = url;
+        newActivity.title = title;
+        newActivity.date = date;
+        
+        user.activity.unshift(newActivity);
+
+        user.save(err => {
             if (err) return err;
         });
+    });
 }
 
-module.exports = activity;
+module.exports = addActivity;

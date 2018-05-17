@@ -40,11 +40,13 @@ module.exports = function (app) {
 
                 thread.save(err => {
                     if (err) return err;
+                    const action = 'created thread';
+                    const url = '/forums/'+thread.topic+'/'+thread._id;
                     const title = thread.title;
-                    const url = '/forums/' + thread.topic + '/' + thread._id;
-                    const action = 'Posted thread';
-                    activity(title, url, action, req, app.io);
+                    const date = getTodaysDate();
 
+                    activity(action, url, title, date, req);
+ 
                     res.send({ status: 'success', msg: 'successful', id: thread._id });
                 });
             });
@@ -58,15 +60,27 @@ module.exports = function (app) {
             { $set: { 'body': thread.body, editDate: getTodaysDate() } }, { new: true }, (err, updated) => {
                 if (err) return err;
 
+                const action = 'edited thread';
+                const url = '/forums/'+thread.topic+'/'+thread._id;
+                const title = thread.title;
+                const date = getTodaysDate();
+
+                activity(action, url, title, date, req);
+
                 res.send({ status: 'success', id: thread._id });
             });
     });
 
     app.get('/thread/:id', (req, res) => {
         forumsCollection.findOne({ '_id': req.params.id }, (err, thread) => {
-            if (err) return res.send({ status: 'error' });
+            if (err) return err;
 
-            res.send(thread);
+            if (!thread) {
+                res.send({ status: 'error' });
+            }
+            else {
+                res.send(thread);
+            }
         });
     });
 
@@ -90,12 +104,19 @@ module.exports = function (app) {
                     obj.name = user.firstName + ' ' + user.lastName;
                     obj.text = comment;
                     obj.date = getTodaysDate();
-                
+
                     thread.comments.unshift(obj);
 
                     thread.save(err => {
                         if (err) return err;
+                        
+                        const action = 'posted comment in';
+                        const url = '/forums/'+thread.topic+'/'+thread._id;
+                        const title = thread.title;
+                        const date = getTodaysDate();
 
+                        activity(action, url, title, date, req);
+ 
                         return res.send({ status: 'success', msg: 'successful' });
                     });
                 });
