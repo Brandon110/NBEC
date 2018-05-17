@@ -4,7 +4,7 @@
 }
 
 @media(max-width: 700px) {
-    .thread-wrapper {
+    .wrap-on-resize {
         flex-wrap: wrap;
     }
 }
