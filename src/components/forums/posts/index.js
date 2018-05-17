@@ -20,14 +20,22 @@ class Posts extends Component {
     }
 
     fetchPosts() {
+        this._isMounted = true;
+
         axios.get('/posts/' + this.props.match.params.topic).then(function (response) {
+            if (this._isMounted === true) {
                 this.setState({ posts: response.data });
+            }
         }.bind(this))
             .catch(err => {
                 return err;
             });
     }
- 
+
+    componentWillUnmount() {
+        this._isMounted = false;
+    }
+
     renderPosts() {
         let posts = this.state.posts;
 
@@ -55,11 +63,11 @@ class Posts extends Component {
                             {
                                 post.comments[0] ?
                                     <div>
-                                        <NavLink 
-                                        to={'/live-profile/activity/'+post.comments[0].userId}>
-                                        {post.comments[0].name}
+                                        <NavLink
+                                            to={'/live-profile/activity/' + post.comments[0].userId}>
+                                            {post.comments[0].name}
                                         </NavLink>
-                                        <br/>
+                                        <br />
                                         <small className='text-muted'>{post.comments[0].date}</small>
                                     </div>
                                     :
@@ -71,7 +79,7 @@ class Posts extends Component {
             })
         }
     }
-     
+
     render() {
         let user = this.props.user;
 
