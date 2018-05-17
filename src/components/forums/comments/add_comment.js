@@ -30,15 +30,14 @@ class AddComment extends Component {
             comment: comment
         })
             .then(response => {
-                this.props.showAlert();
-                window.scrollTo(0, 0);
-
                 let data = response.data;
                 let Alert = {};
                 let alertClass = 'alert alert-';
 
                 if (data.status === 'error') {
                     alertClass += 'info';
+                    this.props.showAlert();
+                    window.scrollTo(0, 0);
                 }
 
                 Alert.alertClass = alertClass;
