@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Parser from 'html-react-parser';
 import Alert from '../../alerts/no_data';
-import AddComment from '../comments/add_comment';
-import DisplayComments from '../comments/display_comments';
+import AddComment from './add_comment';
+import DisplayComments from './display_comments';
 import { NavLink, Link } from 'react-router-dom';
 import axios from 'axios';
 
