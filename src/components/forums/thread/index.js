@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchUser } from '../../../actions/fetch_user';
 import Parser from 'html-react-parser';
 import Alert from '../../alerts/no_data';
 import AddComment from '../comments/add_comment';
