@@ -19,7 +19,7 @@ class ProfilePage extends Component {
                     user.loading ?
                         false
                         :
-                        <div className='container'>
+                        <div className='container mb-5'>
                             <ProfileInfo user={user} />
 
                             <ProfileNav />
