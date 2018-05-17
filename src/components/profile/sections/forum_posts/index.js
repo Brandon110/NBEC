@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchUserPosts } from '../../../../actions/fetch_user_posts';
-import { fetchUser } from '../../../../actions/fetch_user';
 import Posts from './posts';
 import ProfileNav from '../../main/profile_navigation';
 import ProfileInfo from '../../main/profile_info';
@@ -11,7 +10,6 @@ import axios from 'axios';
 class ProfilePostsPage extends Component {
     componentDidMount() {
         this.props.fetchUserPosts();
-        this.props.fetchUser();
     }
 
     render() {
@@ -45,7 +43,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({ fetchUserPosts, fetchUser }, dispatch);
+    return bindActionCreators({ fetchUserPosts }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfilePostsPage);
