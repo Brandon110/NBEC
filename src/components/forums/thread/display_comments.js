@@ -14,9 +14,9 @@ class DisplayComments extends Component {
                         return <li key={index} className='list-group-item p-0 m-0 d-flex align-items-center mb-2 wrap-on-resize'>
                             <div className='d-flex flex-column align-items-center align-self-start p-1 mr-2 h-100' style={{flexShrink: '0', background: '#f2f2f2'}}>
                                 <NavLink to={'/live-profile/activity/'+comment.userId}><small>{comment.name}</small></NavLink>
+                                <small className='text-muted'>{comment.date}</small>
                             </div>
                             <section className='p-1'>{Parser(comment.text)}</section>
-                            <small className='text-muted'>{comment.date}</small>
                         </li>
                     })
                 }
