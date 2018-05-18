@@ -7,7 +7,7 @@ class LastPost extends Component {
 
         return post ?
             <div>
-                <div><NavLink to={'/live-profile/activity/' + post.author.userId}>{post.author.firstName}</NavLink></div>
+                <div><NavLink to={'/live-profile/activity/' + post.author.userId}>{post.author.name}</NavLink></div>
                 <div><small><NavLink to={'/forums/' + post.topic + '/' + post._id}>{post.title}</NavLink></small></div>
                 <div><small className='text-muted'>{post.datePosted}</small></div>
             </div>

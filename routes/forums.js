@@ -29,24 +29,24 @@ module.exports = function (app) {
         else {
             userCollection.findOne({ 'userId': req.user }, (err, user) => {
                 if (err) return err;
-
+ 
                 let thread = new forumsCollection({
                     topic: topic,
                     title: title,
                     body: body,
-                    author: { firstName: user.firstName, userId: user.userId },
+                    author: { name: user.firstName + ' ' + user.lastName, userId: user.userId },
                     datePosted: getTodaysDate(),
                 });
 
                 thread.save(err => {
                     if (err) return err;
                     const action = 'created thread';
-                    const url = '/forums/'+thread.topic+'/'+thread._id;
+                    const url = '/forums/' + thread.topic + '/' + thread._id;
                     const title = thread.title;
                     const date = getTodaysDate();
 
                     activity(action, url, title, date, req);
- 
+
                     res.send({ status: 'success', msg: 'successful', id: thread._id });
                 });
             });
@@ -61,7 +61,7 @@ module.exports = function (app) {
                 if (err) return err;
 
                 const action = 'edited thread';
-                const url = '/forums/'+thread.topic+'/'+thread._id;
+                const url = '/forums/' + thread.topic + '/' + thread._id;
                 const title = thread.title;
                 const date = getTodaysDate();
 
@@ -95,31 +95,27 @@ module.exports = function (app) {
             userCollection.findOne({ 'userId': req.user }, (err, user) => {
                 if (err) return err;
 
-                forumsCollection.findOne({ '_id': threadId }, (err, thread) => {
-                    if (err) return err;
+                let obj = {};
 
-                    let obj = {};
+                obj.userId = req.user;
+                obj.name = user.firstName + ' ' + user.lastName;
+                obj.text = comment;
+                obj.date = getTodaysDate();
 
-                    obj.userId = req.user;
-                    obj.name = user.firstName + ' ' + user.lastName;
-                    obj.text = comment;
-                    obj.date = getTodaysDate();
-
-                    thread.comments.unshift(obj);
-
-                    thread.save(err => {
+                forumsCollection.findOneAndUpdate({ '_id': threadId },
+                    { $push: { 'comments': obj } }, { new: true },
+                    (err, updated) => {
                         if (err) return err;
-                        
+
                         const action = 'posted comment in';
-                        const url = '/forums/'+thread.topic+'/'+thread._id;
-                        const title = thread.title;
-                        const date = getTodaysDate();
+                        const url = '/forums/' + updated.topic + '/' + updated._id;
+                        const title = updated.title;
+                        const date = obj.date;
 
                         activity(action, url, title, date, req);
- 
+
                         return res.send({ status: 'success', msg: 'successful' });
                     });
-                });
             });
         }
     });
