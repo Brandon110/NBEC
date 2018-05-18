@@ -5,7 +5,7 @@ const forumsSchema = new Schema({
     topic: String,
     title: String,
     body: String,
-    author: { firstName: String, userId: String },
+    author: { name: String, userId: String },
     datePosted: String,
     editDate: String,
     likes: Array,

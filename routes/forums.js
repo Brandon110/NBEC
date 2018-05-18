@@ -29,7 +29,7 @@ module.exports = function (app) {
         else {
             userCollection.findOne({ 'userId': req.user }, (err, user) => {
                 if (err) return err;
- 
+
                 let thread = new forumsCollection({
                     topic: topic,
                     title: title,
