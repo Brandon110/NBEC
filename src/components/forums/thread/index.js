@@ -69,7 +69,7 @@ class Thread extends Component {
                                 <div className='mr-2'>
                                     <div className='d-flex flex-column align-items-center p-1' style={{background: '#f2f2f2'}}>
                                     <img className='profile-img' src={threadAuthor.profileImg} />
-                                    <div><NavLink to={'/live-profile/activity/' + threadAuthor.userId}>{threadAuthor.firstName + ' ' + threadAuthor.lastName}</NavLink></div>
+                                    <div><NavLink to={'/live-profile/activity/' + thread.userId}>{thread.name}</NavLink></div>
                                     <div><small className='text-muted'>Born <strong>{threadAuthor.birthDate}</strong></small></div>
                                     <div><small className='text-muted'>Posted <strong>{thread.datePosted}</strong></small></div>
                                     <div className='d-flex mt-1'>
