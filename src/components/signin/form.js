@@ -64,7 +64,12 @@ class SigninForm extends Component {
 
                     case 'successful':
                         this.clearForm();
-                        window.location.href = '/';
+                        if (data.url) {
+                            window.location.href = data.url;
+                        }
+                        else {
+                            window.location.href = '/';
+                        }
                 }
             })
             .catch(err => {

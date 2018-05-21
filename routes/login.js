@@ -21,7 +21,7 @@ module.exports = function (app, passport) {
                 }
                 req.logIn(user, (err) => {
                     if (err) return next(err);
-                    return res.send({ status: 'success', msg: info.message });
+                    return res.send({ status: 'success', msg: info.message, url: req.session.prevUrl });
                 });
             })(req, res, next);
         }
