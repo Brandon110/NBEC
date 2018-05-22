@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { showAlert } from '../../actions/toggle_alert';
+import { NavLink, Link } from 'react-router-dom';
 import AlertMsg from '../alerts/forms';
 import axios from 'axios';
 
@@ -47,7 +48,6 @@ class SigninForm extends Component {
                 }
 
                 Alert.alertClass = alertClass;
-                Alert.display = true;
 
                 switch (data.msg) {
                     case 'null email':
@@ -119,7 +119,10 @@ class SigninForm extends Component {
                         />
                     </div>
 
-                    <button type='submit' className='btn btn-primary'>Sign in</button>
+                    <div className='d-flex justify-content-between'>
+                        <button type='submit' className='btn btn-primary'>Sign in</button>
+                        <NavLink to='/signup'>Sign up</NavLink>
+                    </div>
                 </form>
             </div>
         )
