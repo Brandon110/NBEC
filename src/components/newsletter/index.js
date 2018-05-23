@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Form from './form';
+import Form from './subscribe';
 import './newsletter.css';
 
 class NewsLetter extends Component {

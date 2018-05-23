@@ -3,13 +3,6 @@
      background-color: #7f7fff;
 }
 
-.newsletter-subscribe-btn {
-    height: 30px;
-    line-height: 30px;
-    vertical-align: middle;
-    color: black;
-}
-
 .newsletter-description {
     margin: 0 auto;
     color: white;
@@ -19,6 +12,13 @@
     font-size: 120px;
     margin: 0 auto;
     color: white;
+}
+
+.subscribe-btn {
+    border: solid 1px #7f7fff;
+    color: #7f7fff;
+    background-color: white;
+    cursor: pointer;
 }
  
 @media (max-width: 500px) {

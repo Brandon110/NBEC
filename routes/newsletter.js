@@ -1,25 +1,40 @@
 const subscriberCollection = require('../models/subscribers');
-const validateEmail = require('../validators/validate_email');
+const userCollection = require('../models/users');
 
 module.exports = function (app) {
-    app.post('/activity/subscribe', (req, res) => {
-        const email = req.body.email;
+    app.get('/activity/subscribe', (req, res) => {
+        userCollection.findOne({ 'userId': req.user }, (err, user) => {
+            if (user === null) {
+                req.session.prevUrl = '/newsletter';
+                res.send({ status: 'error', msg: 'null user' });
+            }
+            else {
+                let subscriber = new subscriberCollection({
+                    email: user.email
+                });
 
-        if (!email) {
-            return res.send({ status: 'error', msg: 'null email' });
-        }
-        else if (!validateEmail(email)) {
-            return res.send({ status: 'error', msg: 'invalid email' });
-        }
-        else {
-            let subscriber = new subscriberCollection({
-                email: email
-            });
+                subscriber.save(err => {
+                    if (err) return res.send({ status: 'error', msg: 'email exists' });
+                    return res.send({ status: 'success', msg: 'successful' });
+                });
+            }
+        });
+    });
 
-            subscriber.save(err => {
-                if (err) return res.send({ status: 'error', msg: 'email exists' });
-                return res.send({ status: 'success', msg: 'successful' });
-            });
-        }
+    app.get('/activity/unsescribe', (req, res) => {
+        userCollection.findOne({ 'userId': req.user }, (err, user) => {
+            if (err) return err;
+
+            if (user) {
+                subscriberCollection.remove({ 'email': user.email }, (err, results) => {
+                    if (err) return err;
+                    res.send('Successfully unsescribed from our newsletter')
+                });
+            }
+            else {
+                req.session.prevUrl = '/activity/unsescribe';
+                res.redirect('/signin');
+            }
+        });
     });
 }

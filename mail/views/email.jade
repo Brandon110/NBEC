@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    title my jade template
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous")
+    
+  body
+    div
+    h1 Recent Discussions #{email}</h1> 
+    br
+    ul.list-unstyled
+            each thread in threads
+             li
+              span forum post&nbsp;
+              a(href='http://localhost:3000/forums/'+thread.topic+'/'+thread._id)= thread.title 
+              span &nbsp;started by&nbsp;
+              a(href='http://localhost:3000/live-profile/activity/'+thread.author.userId)= thread.author.name
+              hr
+              </li>
+            
+            br
+            p You are receiving this because you are subscribed to NBEC newsletter. To unsescribe visit link below
+            a(href='http://localhost:3000/activity/unsescribe') http://localhost:3000/activity/unsescribe    
