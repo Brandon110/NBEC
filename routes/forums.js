@@ -124,4 +124,20 @@ module.exports = function (app) {
             });
         }
     });
+
+    app.post('/activity/delete-thread', (req, res) => {
+        const threadAuthor = req.body.thread.author.userId;
+        const threadId = req.body.thread._id;
+
+        if (req.user === threadAuthor) {
+            forumsCollection.remove({ '_id': threadId }, (err, results) => {
+                if (err) return err;
+
+                res.send({ status: 'success' });
+            });
+        }
+        else {
+            return false;
+        }
+    });
 }

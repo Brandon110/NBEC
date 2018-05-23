@@ -47,6 +47,28 @@ class EditThread extends Component {
             });
     }
 
+    deleteThread() {
+        let thread = this.state.thread;
+        let answer = confirm('Would you like to delete this thread? This can\'t be undone!');
+
+        if (answer === true) {
+            axios.post('/activity/delete-thread', {
+                thread: thread
+            })
+                .then(response => {
+                    if (response.data.status === 'success') {
+                        window.location.href = '/profile/posts';
+                    }
+                })
+                .catch(err => {
+                    return err;
+                });
+        }
+        else {
+            return false;
+        }
+    }
+
     render() {
         let thread = this.state.thread;
 
@@ -55,7 +77,7 @@ class EditThread extends Component {
                 {
                     thread ?
                         <div className='container'>
-                            <h1>{thread.title}</h1>
+                            <h1 className='text-center mb-3'>{thread.title}</h1>
 
                             <form onSubmit={this.handleSubmit.bind(this)}>
                                 <div className='form-group'>
@@ -65,7 +87,18 @@ class EditThread extends Component {
                                         className='white-background'
                                     />
                                 </div>
-                                <button className='btn btn-primary' type='submit'>Save</button>
+                                <div className='d-flex align-items-center justify-content-between'>
+                                    <button
+                                        className='btn btn-primary'
+                                        type='submit'>
+                                        Save
+                                 </button>
+                                    <button
+                                        onClick={this.deleteThread.bind(this)}
+                                        className='btn btn-danger'>
+                                        Delete
+                             </button>
+                                </div>
                             </form>
                         </div>
                         : false
