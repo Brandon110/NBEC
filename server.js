@@ -43,6 +43,7 @@ require('./routes/login')(app, passport);
 require('./routes/user')(app);
 require('./routes/profile')(app);
 require('./routes/forums')(app);
+require('./mail/cron');
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
