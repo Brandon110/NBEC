@@ -80,4 +80,8 @@ main {
         width: 100%;
     }
 
+    .wrap-on-resize {
+        flex-wrap: wrap;
+    }
+
 }
