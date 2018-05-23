@@ -5,7 +5,7 @@ const activity = require('../activity/index');
 
 module.exports = function (app) {
     app.get('/posts/:topic', (req, res) => {
-        forumsCollection.find({ topic: req.params.topic }, (err, posts) => {
+        forumsCollection.find({ topic: req.params.topic }).sort({ _id: -1 }).exec((err, posts) => {
             if (err) return err;
 
             res.send(posts);
@@ -56,19 +56,24 @@ module.exports = function (app) {
     app.post('/activity/edit-thread', (req, res) => {
         const thread = req.body.thread;
 
-        forumsCollection.findOneAndUpdate({ '_id': thread._id },
-            { $set: { 'body': thread.body, editDate: getTodaysDate() } }, { new: true }, (err, updated) => {
-                if (err) return err;
+        if (req.user === thread.author.userId) {
+            forumsCollection.findOneAndUpdate({ '_id': thread._id },
+                { $set: { 'body': thread.body, editDate: getTodaysDate() } }, { new: true }, (err, updated) => {
+                    if (err) return err;
 
-                const action = 'edited thread';
-                const url = '/forums/' + thread.topic + '/' + thread._id;
-                const title = thread.title;
-                const date = getTodaysDate();
+                    const action = 'edited thread';
+                    const url = '/forums/' + thread.topic + '/' + thread._id;
+                    const title = thread.title;
+                    const date = getTodaysDate();
 
-                activity(action, url, title, date, req);
+                    activity(action, url, title, date, req);
 
-                res.send({ status: 'success', id: thread._id });
-            });
+                    res.send({ status: 'success', id: thread._id });
+                });
+        }
+        else {
+            return;
+        }
     });
 
     app.get('/thread/:id', (req, res) => {
