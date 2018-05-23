@@ -12,7 +12,7 @@ const createMail = () => {
             throw err;
         }
 
-        forumsCollection.find({}).sort({ 'date': -1 }).limit(10).exec((err, threads) => {
+        forumsCollection.find({}).sort({_id: -1}).limit(10).exec((err, threads) => {
             if (err) return err;
 
             let compiledTmpl = _jade.compile(data, { filename: template });
