@@ -54,7 +54,7 @@ class EditThread extends Component {
             <main>
                 {
                     thread ?
-                        <div className='container-fluid'>
+                        <div className='container'>
                             <h1>{thread.title}</h1>
 
                             <form onSubmit={this.handleSubmit.bind(this)}>
@@ -62,6 +62,7 @@ class EditThread extends Component {
                                     <ReactQuill
                                         value={thread.body}
                                         onChange={this.onChange.bind(this)}
+                                        className='white-background'
                                     />
                                 </div>
                                 <button className='btn btn-primary' type='submit'>Save</button>

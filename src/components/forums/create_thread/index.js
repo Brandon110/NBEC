@@ -105,7 +105,7 @@ class CreateThread extends Component {
 
         return (
             <main>
-                <div className='container-fluid'>
+                <div className='container'>
 
                     <AlertMsg Alert={Alert} />
 
@@ -129,12 +129,16 @@ class CreateThread extends Component {
                             <ReactQuill
                                 value={formValues['text']}
                                 onChange={this.handleBodyChange.bind(this)}
+                                className='white-background'
                             />
                         </div>
 
                         <button type='submit' className='btn btn-primary'>Create</button>
                     </form>
 
+                    <p className='text-muted text-center'>
+                        When creating a thread please keep on topic and be mindful of others views and opionions
+                </p>
                 </div>
             </main>
         )

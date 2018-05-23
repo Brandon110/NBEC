@@ -15,7 +15,7 @@ class Header extends Component {
         let user = this.props.user;
 
         return (
-            <header className='white-background pb-3'>
+            <header className='white-background mb-3'>
                 <MainHeader user={user} />
 
                 <Dropdown user={user} />

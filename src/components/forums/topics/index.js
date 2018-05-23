@@ -11,18 +11,18 @@ class Topics extends Component {
     render() {
         return (
             <main>
-                <div className='container-fluid mt-2 mb-2'>
+                <div className='container mt-2 mb-2'>
 
                     <div className='d-flex align-items-center text-center topic-section-title p-1'>
                         <div className='w-100'>
                             <span>Topics</span>
                         </div>
 
-                        <div className='w-100'>
+                        <div className='w-25 hide-on-resize'>
                             <span># of threads</span>
                         </div>
 
-                        <div className='w-100'>
+                        <div className='w-25 hide-on-resize'>
                             <span>last post</span>
                         </div>
                     </div>

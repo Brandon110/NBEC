@@ -55,11 +55,11 @@ class Posts extends Component {
                             <div><small className='text-muted'>Discussions relating to global warming</small></div>
                         </div>
 
-                        <div className='w-100 border d-flex flex-column justify-content-center'>
+                        <div className='w-25 border d-flex flex-column justify-content-center hide-on-resize'>
                             <div><small>Replies {post.comments.length}</small></div>
                         </div>
 
-                        <div className='w-100 border d-flex flex-column justify-content-center'>
+                        <div className='w-25 border d-flex flex-column justify-content-center hide-on-resize'>
                             {
                                 post.comments[0] ?
                                     <div>
@@ -85,7 +85,7 @@ class Posts extends Component {
 
         return (
             <main>
-                <div className='container-fluid mt-2 mb-2'>
+                <div className='container mt-2 mb-2'>
                     {
                         user && !user.loading ?
                             <NavLink
@@ -100,11 +100,11 @@ class Posts extends Component {
                             <span>Discussion</span>
                         </div>
 
-                        <div className='w-100'>
+                        <div className='w-25 hide-on-resize'>
                             <span>Replies/Views</span>
                         </div>
 
-                        <div className='w-100'>
+                        <div className='w-25 hide-on-resize'>
                             <span>last post</span>
                         </div>
                     </div>
