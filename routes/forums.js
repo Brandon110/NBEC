@@ -84,7 +84,27 @@ module.exports = function (app) {
                 res.send({ status: 'error' });
             }
             else {
-                res.send(thread);
+                userCollection.findOne({ 'userId': thread.author.userId }, (err, user) => {
+                    if (err) return err;
+
+                    let data = {};
+                    
+                    data._id = thread._id;
+                    data.title = thread.title;
+                    data.body = thread.body;
+                    data.datePosted = thread.datePosted;
+                    data.likes = thread.likes;
+                    data.comments = thread.comments;
+                    data.topic = thread.topic;
+
+                    data.author = {};
+                    data.author.name = thread.author.name;
+                    data.author.profileImg = user.profileImg;
+                    data.author.userId = thread.author.userId;
+                    data.author.birthDate = user.birthDate;
+
+                    res.send(data)
+                });
             }
         });
     });
@@ -139,5 +159,40 @@ module.exports = function (app) {
         else {
             return false;
         }
+    });
+
+    app.post('/activity/like-thread', (req, res) => {
+        const threadId = req.body.threadId;
+        const userId = req.body.userId;
+        const fullName = req.body.fullName;
+
+        forumsCollection.findOneAndUpdate({ '_id': threadId, 'likes.userId': { $ne: userId } }, {
+            $push:
+                { 'likes': { userId: userId, name: fullName } }
+        },
+            (err, updated) => {
+                if (err) return err;
+                const action = 'liked thread';
+                const url = '/forums/' + updated.topic + '/' + updated._id;
+                const title = updated.title;
+                const date = getTodaysDate();
+
+                activity(action, url, title, date, req);
+
+                res.send({ status: 'success' });
+            });
+    });
+
+    app.post('/activity/unlike-thread', (req, res) => {
+        const threadId = req.body.threadId;
+
+        forumsCollection.update({ '_id': threadId },
+            {
+                $pull:
+                    { 'likes': { 'userId': req.user } }
+            }, (err, updated) => {
+                if (err) return err;
+                res.send({ status: 'success' })
+            });
     });
 }

@@ -8,7 +8,7 @@ const forumsSchema = new Schema({
     author: { name: String, userId: String },
     datePosted: String,
     editDate: String,
-    likes: Array,
+    likes: [{ name: String, userId: String }],
     comments: [{
         name: String,
         userId: String, 

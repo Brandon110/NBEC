@@ -14,6 +14,7 @@ module.exports = function (app) {
                 userData._id = user._id;
                 userData.firstName = user.firstName;
                 userData.lastName = user.lastName;
+                userData.fullName = user.firstName + ' ' + user.lastName;
                 userData.email = user.email;
                 userData.birthDate = user.birthDate;
                 userData.profileImg = user.profileImg;

@@ -48,7 +48,7 @@ class LocalEvents extends Component {
                     <NumberOfThreads posts={posts} />
                 </div>
 
-                <div className='w-25 border d-flex flex-column justify-content- hide-on-resize'>
+                <div className='w-25 border d-flex flex-column justify-content-center hide-on-resize'>
                     <LastPost posts={posts[0]} />
                 </div>
             </div>
