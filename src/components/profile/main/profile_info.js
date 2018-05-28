@@ -9,7 +9,7 @@ class ProfileInfo extends Component {
             <div className='profile-wrapper grey-shadow-bottom mt-4'>
 
                 <div className='d-flex flex-column justify-content-center align-items-center flex-wrap mt-3'>
-                    <h5 className='text-center'><strong>{user.firstName + ' ' + user.lastName}</strong></h5>
+                    <h5 className='text-center'><strong>{user.fullName}</strong></h5>
                     <img className='profile-img border' src={user.profileImg} />
                     <div className='align-self-center' style={{ width: '200px' }}>
                         <div className='text-center'>

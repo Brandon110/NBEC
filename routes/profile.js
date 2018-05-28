@@ -110,6 +110,7 @@ module.exports = function (app) {
             data.dateJoined = user.dateJoined;
             data.activity = user.activity;
             data.userId = user.userId;
+            data.fullName = user.firstName + ' ' + user.lastName;
 
             forumCollection.find({ 'author.userId': user.userId }, (err, posts) => {
                 if (err) return err;

@@ -10,7 +10,7 @@ class MainHeader extends Component {
         }
         else if (user) {
             return <div className='mr-5 d-flex'>
-                <NavLink to='/profile/activity' activeClassName='active'>{user.firstName + ' ' + user.lastName}</NavLink>
+                <NavLink to='/profile/activity' activeClassName='active'>{user.fullName}</NavLink>
             </div>
         }
         else {
