@@ -93,6 +93,7 @@ module.exports = function (app) {
                     data.title = thread.title;
                     data.body = thread.body;
                     data.datePosted = thread.datePosted;
+                    data.editDate = thread.editDate;
                     data.likes = thread.likes;
                     data.comments = thread.comments;
                     data.topic = thread.topic;

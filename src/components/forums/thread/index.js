@@ -22,12 +22,20 @@ class Thread extends Component {
     }
 
     fetchThread() {
+        this._isMounted = true;
+
         axios.get('/thread/' + this.props.match.params.id).then(function (response) {
-            this.setState({ thread: response.data });
+            if (this._isMounted === true) {
+                this.setState({ thread: response.data });
+            }
         }.bind(this))
             .catch(err => {
                 return err;
             });
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     renderThread() {
@@ -53,6 +61,12 @@ class Thread extends Component {
                                 <div><NavLink to={'/live-profile/activity/' + thread.author.userId}>{thread.author.name}</NavLink></div>
                                 <div><small className='text-muted'>Born <strong>{thread.author.birthDate}</strong></small></div>
                                 <div><small className='text-muted'>Posted <strong>{thread.datePosted}</strong></small></div>
+                                {
+                                    thread.editDate ?
+                                        <div><small className='text-muted'><strong>{'(Edited ' + thread.editDate + ')'}</strong></small></div>
+                                        :
+                                        false
+                                }
                                 <div className='d-flex mt-1'>
                                     <small className='mr-2'>
                                         {
@@ -64,7 +78,7 @@ class Thread extends Component {
                                                 :
                                                 false
                                         }
-                                         {thread.likes.length} likes
+                                        {thread.likes.length} likes
                                     </small>
                                     <small>{thread.comments.length} replies</small>
                                 </div>
