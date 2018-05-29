@@ -88,7 +88,7 @@ module.exports = function (app) {
                     if (err) return err;
 
                     let data = {};
-                    
+
                     data._id = thread._id;
                     data.title = thread.title;
                     data.body = thread.body;
@@ -195,5 +195,62 @@ module.exports = function (app) {
                 if (err) return err;
                 res.send({ status: 'success' })
             });
+    });
+
+    app.post('/activity/like-comment', (req, res) => {
+        const threadId = req.body.threadId;
+        const fullName = req.body.fullName;
+        const userId = req.body.userId;
+        const commentId = req.body.commentId;
+
+        forumsCollection.findById(threadId, (err, thread) => {
+            if (err) return err;
+
+            const comment = thread.comments.id(commentId);
+
+            const index = comment.likes.findIndex(x => x.userId == userId);
+
+            if (index === -1) {
+                comment.likes.push({ name: fullName, userId: userId });
+
+                thread.save(err => {
+                    if (err) return err;
+
+                    const action = 'liked comment in';
+                    const url = '/forums/' + thread.topic + '/' + thread._id;
+                    const title = thread.title;
+                    const date = getTodaysDate();
+
+                    activity(action, url, title, date, req);
+
+                    res.send({ status: 'success' });
+                });
+            }
+            else {
+                return false;
+            }
+        });
+    });
+
+    app.post('/activity/unlike-comment', (req, res) => {
+        const threadId = req.body.threadId;
+        const fullName = req.body.fullName;
+        const userId = req.body.userId;
+        const commentId = req.body.commentId;
+
+        forumsCollection.findById(threadId, (err, thread) => {
+            if (err) return err;
+
+            const comment = thread.comments.id(commentId);
+
+            const index = comment.likes.findIndex(x => x.userId == userId);
+
+            comment.likes.splice(index, 1);
+
+            thread.save(err => {
+                if (err) return err;
+                res.send({ status: 'success' });
+            });
+        });
     });
 }

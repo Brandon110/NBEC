@@ -4,7 +4,7 @@ import Parser from 'html-react-parser';
 import Alert from '../../alerts/no_data';
 import AddComment from './add_comment';
 import DisplayComments from './display_comments';
-import LikeThread from './reaction';
+import ThreadReaction from './thread_reaction';
 import { NavLink, Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -71,7 +71,7 @@ class Thread extends Component {
                                     <small className='mr-2'>
                                         {
                                             user && !user.loading ?
-                                                <LikeThread
+                                                <ThreadReaction
                                                     fetchThread={this.fetchThread.bind(this)}
                                                     user={user}
                                                     thread={thread} />
@@ -104,7 +104,9 @@ class Thread extends Component {
 
                     <div className='mt-5 mb-5'>
                         <DisplayComments
-                            comments={thread.comments}
+                            thread={thread}
+                            user={user}
+                            fetchThread={this.fetchThread.bind(this)}
                         />
                     </div>
                 </div>
