@@ -14,7 +14,7 @@ const userSchema = new Schema({
    goal: String,
    dateJoined: String,
    userId: String,
-   activity: Array
+   activity: [{ action: String, url: String, title: String, date: String  }]
 });
 
 userSchema.pre('save', function(next) {

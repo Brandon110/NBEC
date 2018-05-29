@@ -121,4 +121,21 @@ module.exports = function (app) {
             });
         });
     });
+
+    app.post('/activity/remove-activity', (req, res) => {
+        const id = req.body.id;
+
+        userCollection.findOneAndUpdate({ 'userId': req.user },
+            {
+                $pull: {
+                    'activity': {
+                        '_id': id
+                    }
+                }
+            }, { new: true },
+            (err, updated) => {
+                if (err) return err;
+                res.send({ status: 'success' });
+            });
+    });
 }

@@ -23,6 +23,16 @@
     margin: 0 auto;
 }
 
+.remove-activity-btn {
+    display: none;
+    font-size: 15px;
+}
+
+.activity-wrapper:hover .remove-activity-btn {
+    display: block;
+    color: red;
+}
+
 @media (max-width: 700px) {
     .edit-profile-form-wrapper {
         width: 100%;
