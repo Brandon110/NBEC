@@ -44,6 +44,7 @@ require('./routes/user')(app);
 require('./routes/profile')(app);
 require('./routes/forums')(app);
 require('./mail/cron');
+require('./routes/logout')(app);
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));

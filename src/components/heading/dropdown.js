@@ -34,7 +34,8 @@ class DropdownHeader extends Component {
         }
         else if (user) {
             return <li className='list-group-item'>
-                <NavLink to='/profile/activity' activeClassName='active'>{user.fullName}</NavLink>
+                <NavLink to='/profile/activity' className='mr-3' activeClassName='active'>{user.fullName}</NavLink>
+                <a href='/signout'><i className="fas fa-sign-out-alt"></i></a>
             </li>
         }
         else {

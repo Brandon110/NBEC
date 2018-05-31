@@ -10,7 +10,8 @@ class MainHeader extends Component {
         }
         else if (user) {
             return <div className='mr-5 d-flex'>
-                <NavLink to='/profile/activity' activeClassName='active'>{user.fullName}</NavLink>
+                <NavLink to='/profile/activity' className='mr-3' activeClassName='active'>{user.fullName}</NavLink>
+                <a href='/signout'><i className="fas fa-sign-out-alt"></i></a>
             </div>
         }
         else {
