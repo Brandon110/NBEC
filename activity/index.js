@@ -5,7 +5,7 @@ const addActivity = (action, url, title, date, req) => {
         if (err) return err;
 
         let newActivity = {};
-
+ 
         newActivity.action = action;
         newActivity.url = url;
         newActivity.title = title;
