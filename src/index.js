@@ -17,6 +17,7 @@ import Posts from './components/forums/posts';
 import CreateThread from './components/forums/create_thread';
 import EditThread from './components/forums/edit_thread';
 import Thread from './components/forums/thread';
+import requiredLoggedIn from './components/HOC/authentication_required';
 import { BrowserRouter, Switch, Route, Link, hashHistory } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
@@ -38,15 +39,15 @@ ReactDOM.render(
 <Route path='/newsletter' component={NewsLetter}/>
 <Route path='/signup' component={RegisterPage}/>
 <Route path='/signin' component={SigninPage}/>
-<Route exact path='/profile/activity' component={ProfileActivity}/>
-<Route path='/profile/posts' component={ProfilePosts}/>
-<Route path='/profile/update-profile' component={EditProfile}/>
+<Route exact path='/profile/activity' component={requiredLoggedIn(ProfileActivity)}/>
+<Route path='/profile/posts' component={requiredLoggedIn(ProfilePosts)}/>
+<Route path='/profile/update-profile' component={requiredLoggedIn(EditProfile)}/>
 <Route exact path='/live-profile/activity/:userId' component={LiveProfileActivity}/>
 <Route path='/live-profile/posts/:userId' component={LiveProfilePosts}/>
 <Route exact path='/forums' component={Topics}/>
 <Route exact path='/forums/:topic' component={Posts}/>
-<Route path='/create/thread/:topic' component={CreateThread}/>
-<Route path='/forums/edit-thread/:id' component={EditThread}/>
+<Route path='/create/thread/:topic' component={requiredLoggedIn(CreateThread)}/>
+<Route path='/forums/edit-thread/:id' component={requiredLoggedIn(EditThread)}/>
 <Route path='/forums/:topic/:id' component={Thread}/>
 </Switch>
 <Footer/>

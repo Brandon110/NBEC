@@ -45,6 +45,7 @@ require('./routes/profile')(app);
 require('./routes/forums')(app);
 require('./mail/cron');
 require('./routes/logout')(app);
+require('./routes/authentication_required')(app);
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
@@ -53,5 +54,5 @@ app.get('*', (req, res) => {
 app.use((err, req, res, next) => {
     res.status(err.status || 500);
 });
- 
+
 app.listen(process.env.PORT || 3000);
