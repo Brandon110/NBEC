@@ -60,7 +60,7 @@ class NewsLetterForm extends Component {
                     Alert={Alert}
                 />
                 <div className='d-flex flex-column'>
-                    <button onClick={this.handleSubscribe.bind(this)} className='subscribe-btn'>Subscribe</button>
+                    <button onClick={this.handleSubscribe.bind(this)} className='main-btn'>Subscribe</button>
                     <small className='text-muted text-center mt-3'>You may unsescribe at any time.</small>
                 </div>
             </div>

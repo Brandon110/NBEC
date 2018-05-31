@@ -13,13 +13,6 @@
     margin: 0 auto;
     color: white;
 }
-
-.subscribe-btn {
-    border: solid 1px #7f7fff;
-    color: #7f7fff;
-    background-color: white;
-    cursor: pointer;
-}
  
 @media (max-width: 500px) {
  

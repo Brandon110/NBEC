@@ -60,6 +60,17 @@ main {
     outline: none!important;
 }
 
+.transparent-btn:focus {
+    outline: none!important;
+}
+
+.main-btn {
+    border: solid 1px #7f7fff;
+    color: #7f7fff;
+    background-color: white;
+    cursor: pointer;
+}
+
 .white-border-bottom {
     border-bottom: solid 1px white;
 }
