@@ -208,9 +208,16 @@ module.exports = function (app) {
 
             const comment = thread.comments.id(commentId);
 
-            const index = comment.likes.findIndex(x => x.userId == userId);
+            let index = null;
 
-            if (index === -1) {
+            for (var i = 0; i < comment.likes.length; i++) {
+                if (userId === comment.likes[i].userId) {
+                    index = i;
+                    break;
+                }
+            }
+
+            if (!index) {
                 comment.likes.push({ name: fullName, userId: userId });
 
                 thread.save(err => {
@@ -243,7 +250,14 @@ module.exports = function (app) {
 
             const comment = thread.comments.id(commentId);
 
-            const index = comment.likes.findIndex(x => x.userId == userId);
+            let index = null;
+
+            for (var i = 0; i < comment.likes.length; i++) {
+                if (userId == comment.likes[i].userId) {
+                    index = i;
+                    break;
+                }
+            }
 
             comment.likes.splice(index, 1);
 
