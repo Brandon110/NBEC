@@ -22,7 +22,7 @@ class ThreadReaction extends Component {
     likeThread() {
         let thread = this.props.thread;
         let user = this.props.user;
-
+  
         axios.post('/activity/like-thread', {
             threadId: thread._id,
             userId: user.userId,

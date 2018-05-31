@@ -253,4 +253,41 @@ module.exports = function (app) {
             });
         });
     });
+
+    app.post('/activity/remove-comment', (req, res) => {
+        const threadId = req.body.threadId;
+        const commentId = req.body.commentId;
+
+        forumsCollection.findOneAndUpdate({ '_id': threadId },
+            {
+                $pull:
+                    {
+                        'comments':
+                            { '_id': commentId }
+                    }
+            }, { new: true },
+            (err, updated) => {
+                if (err) return err;
+                res.send({ status: 'success' });
+            });
+    });
+
+    app.post('/activity/edit-comment', (req, res) => {
+        const threadId = req.body.threadId;
+        const commentId = req.body.commentId;
+        const editedComment = req.body.editedComment;
+
+        forumsCollection.findById(threadId, (err, thread) => {
+            if (err) return err;
+
+            const comment = thread.comments.id(commentId);
+
+            comment.text = editedComment;
+
+            thread.save(err => {
+                if (err) return err;
+                res.send({ status: 'success' });
+            });
+        });
+    });
 }

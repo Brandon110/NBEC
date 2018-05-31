@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Parser from 'html-react-parser';
 import Alert from '../../alerts/no_data';
-import AddComment from './add_comment';
-import DisplayComments from './display_comments';
-import ThreadReaction from './thread_reaction';
+import AddComment from './main/add_comment';
+import DisplayComments from './main/display_comments';
+import ThreadReaction from './main/thread_reaction';
 import { NavLink, Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -72,6 +72,7 @@ class Thread extends Component {
                                         {
                                             user && !user.loading ?
                                                 <ThreadReaction
+                                                    id={thread._id}
                                                     fetchThread={this.fetchThread.bind(this)}
                                                     user={user}
                                                     thread={thread} />
@@ -95,6 +96,7 @@ class Thread extends Component {
                             user && !user.loading ?
                                 <AddComment
                                     thread={thread}
+                                    id={thread._id}
                                     fetchThread={this.fetchThread.bind(this)}
                                 />
                                 :

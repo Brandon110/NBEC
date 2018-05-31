@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import ReactQuill from 'react-quill';
-import AlertMsg from '../../alerts/forms';
+import AlertMsg from '../../../alerts/forms';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { showAlert } from '../../../actions/toggle_alert';
+import { showAlert } from '../../../../actions/toggle_alert';
 import axios from 'axios';
 
 class AddComment extends Component {
