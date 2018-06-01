@@ -94,6 +94,10 @@ main {
     min-width: 30%;
 }
 
+.loader {
+    color: blue;
+}
+
 @media (max-width: 700px) {
 
     .form-wrapper {

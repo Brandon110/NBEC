@@ -51,7 +51,7 @@ class OffTopic extends Component {
                 </div>
 
                 <div className='w-25 border d-flex flex-column justify-content-center hide-on-resize'>
-                    <LastPost posts={posts[0]} />
+                    <LastPost posts={posts} />
                 </div>
             </div>
         )

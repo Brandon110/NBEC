@@ -44,7 +44,11 @@ class Thread extends Component {
         let user = this.props.user;
 
         if (!thread) {
-            return false;
+            return (
+                <div className="fa-3x popup text-center">
+                    <span><i className="fas fa-circle-notch fa-spin loader"></i></span>
+                </div>
+            )
         }
         else if (thread.status === 'error') {
             return <Alert msg='Oops! Something went wrong! This thread may no longer exist.' />
@@ -69,7 +73,7 @@ class Thread extends Component {
                                         false
                                 }
                                 <div className='d-flex align-items-center justify-content-between p-1 mt-1'>
-                                    <small> 
+                                    <small>
                                         {
                                             user && !user.loading ?
                                                 <ThreadReaction
