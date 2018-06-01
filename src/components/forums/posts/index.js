@@ -52,7 +52,6 @@ class Posts extends Component {
 
                         <div className='w-100 border d-flex flex-column justify-content-center'>
                             <NavLink to={'/forums/' + post.topic + '/' + post._id}>{post.title}</NavLink>
-                            <div><small className='text-muted'>Discussions relating to global warming</small></div>
                         </div>
 
                         <div className='w-25 border d-flex flex-column justify-content-center hide-on-resize'>

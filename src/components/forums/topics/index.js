@@ -38,14 +38,6 @@ class Topics extends Component {
                     <LocalEvents />
 
                     <OffTopic />
-
-
-                    <p className='mt-2 text-muted'>
-                        Explore topics to your interest and engage in discussions with other members relating to the
-                        envrionment. Please be mindful of others feelings when posting in forums, threads must be directly
-                        related to the topic you are viewing. Heated debates and discussions are allowed but name calling
-                        or any direct attacks towards another indiviual is not permitted.
-            </p>
                 </div>
             </main>
         )
