@@ -5,6 +5,7 @@ import Alert from '../../alerts/no_data';
 import AddComment from './main/add_comment';
 import DisplayComments from './main/display_comments';
 import ThreadReaction from './main/thread_reaction';
+import Reactions from '../toggle_reactions';
 import { NavLink, Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -52,11 +53,11 @@ class Thread extends Component {
             return (
                 <div className='container'>
 
-                    <h1 className='text-center'>{thread.title}</h1>
+                    <h1 className='text-center mb-5'>{thread.title}</h1>
 
                     <div className='d-flex flex-1 wrap-on-resize border white-background'>
                         <div className='mr-2'>
-                            <div className='d-flex flex-column align-items-center p-1' style={{ background: '#f2f2f2' }}>
+                            <div className='d-flex flex-column align-items-center p-2' style={{ background: '#f2f2f2' }}>
                                 <img className='profile-img' src={thread.author.profileImg} />
                                 <div><NavLink to={'/live-profile/activity/' + thread.author.userId}>{thread.author.name}</NavLink></div>
                                 <div><small className='text-muted'>Born <strong>{thread.author.birthDate}</strong></small></div>
@@ -67,8 +68,8 @@ class Thread extends Component {
                                         :
                                         false
                                 }
-                                <div className='d-flex mt-1'>
-                                    <small className='mr-2'>
+                                <div className='d-flex align-items-center justify-content-between p-1 mt-1'>
+                                    <small> 
                                         {
                                             user && !user.loading ?
                                                 <ThreadReaction
@@ -79,8 +80,10 @@ class Thread extends Component {
                                                 :
                                                 false
                                         }
-                                        {thread.likes.length} likes
                                     </small>
+
+                                    <small><Reactions likes={thread.likes} /></small>
+
                                     <small>{thread.comments.length} replies</small>
                                 </div>
                             </div>

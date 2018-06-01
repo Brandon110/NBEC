@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Parser from 'html-react-parser';
 import CommentReaction from './comment_reaction';
 import ReactQuill from 'react-quill';
+import Reactions from '../../toggle_reactions';
 import { NavLink, Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -85,20 +86,23 @@ class DisplayComments extends Component {
                                     {comment.date}
                                 </small>
 
-                                <small className='text-muted'>
-                                    {
-                                        user && !user.laoding ?
-                                            <CommentReaction
-                                                thread={thread}
-                                                user={user}
-                                                comment={comment}
-                                                fetchThread={this.props.fetchThread}
-                                            />
-                                            :
-                                            false
-                                    }
-                                    likes {comment.likes.length}
-                                </small>
+                                <div className='d-flex align-items-center'>
+                                    <small className='text-muted'>
+                                        {
+                                            user && !user.laoding ?
+                                                <CommentReaction
+                                                    thread={thread}
+                                                    user={user}
+                                                    comment={comment}
+                                                    fetchThread={this.props.fetchThread}
+                                                />
+                                                :
+                                                false
+                                        }
+                                    </small>
+
+                                    <small><Reactions likes={comment.likes} /></small>
+                                </div>
 
                                 {
                                     user.userId === comment.userId ?
