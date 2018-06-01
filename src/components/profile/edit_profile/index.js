@@ -92,37 +92,42 @@ class EditProfile extends Component {
 
         return (
             <main className='pt-4 pb-4'>
-                <div className='container white-background shadow'>
-                    <div className='form-wrapper'>
-                        <AlertMsg
-                            Alert={Alert}
-                        />
-                        <form onSubmit={this.handleSubmit.bind(this)} className='mb-5'>
-                            <ProfileImg
-                                formValues={formValues}
-                                user={user}
-                                onChange={this.onChange.bind(this)}
+                <div className='container'>
+                    <div className='white-background shadow'>
+                        <div className='form-wrapper'>
+                            <AlertMsg
+                                Alert={Alert}
                             />
+                            <form onSubmit={this.handleSubmit.bind(this)}>
+                                <ProfileImg
+                                    formValues={formValues}
+                                    user={user}
+                                    onChange={this.onChange.bind(this)}
+                                />
 
-                            <BirthDate
-                                formValues={formValues}
-                                user={user}
-                                onChange={this.onChange.bind(this)}
-                            />
+                                <BirthDate
+                                    formValues={formValues}
+                                    user={user}
+                                    onChange={this.onChange.bind(this)}
+                                />
 
-                            <Goal
-                                formValues={formValues}
-                                user={user}
-                                onChange={this.onChange.bind(this)}
-                            />
+                                <Goal
+                                    formValues={formValues}
+                                    user={user}
+                                    onChange={this.onChange.bind(this)}
+                                />
 
-                            <button type='submit' className='btn btn-primary'>Save</button>
-                        </form>
-
-                        <hr />
-
-                        <AdvancedSettings user={user} />
+                                <button type='submit' className='btn btn-primary'>Save</button>
+                            </form>
+                        </div>
                     </div>
+
+                    <div className='white-background shadow mt-5'>
+                        <div className='form-wrapper'>
+                            <AdvancedSettings user={user} />
+                        </div>
+                    </div>
+
                 </div>
             </main>
         )

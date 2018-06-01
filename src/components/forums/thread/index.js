@@ -83,8 +83,6 @@ class Thread extends Component {
                                     </small>
 
                                     <small><Reactions likes={thread.likes} /></small>
-
-                                    <small>{thread.comments.length} replies</small>
                                 </div>
                             </div>
                         </div>

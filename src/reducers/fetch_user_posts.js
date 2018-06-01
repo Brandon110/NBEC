@@ -6,7 +6,7 @@ export const fetchUserPosts = (state = { loading: true }, action) => {
             return action.posts;
 
         case FETCH_USER_POSTS_ERROR:
-            return state;
+            return null;
 
         default:
             return state;

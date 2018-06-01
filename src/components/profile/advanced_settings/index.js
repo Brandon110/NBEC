@@ -7,19 +7,19 @@ class SettingsPage extends Component {
         let user = this.props.user;
 
         return (
-            <main>
-                <div className='mt-5 d-flex flex-column flex-1'>
+                <div>
                     <h5 className='text-center'>Advanced Settings</h5>
 
-                    <div className='mt-5'>
+                    <div className='mt-5 mb-5'>
                         <ChangePasswordForm />
                     </div>
+                     
+                     <hr/>
 
-                    <div className='mt-auto'>
+                    <div className='mt-5'>
                         <DeactivateAccount user={user} />
                     </div>
                 </div>
-            </main>
         )
     }
 }

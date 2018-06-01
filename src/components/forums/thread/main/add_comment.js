@@ -77,7 +77,7 @@ class AddComment extends Component {
                         theme={null}
                         className='border white-background'
                     />
-                    <button className='btn btn-primary' type='submit'>Comment</button>
+                    <button className='main-btn mt-2' type='submit'>Comment</button>
                 </form>
             </div>
         )

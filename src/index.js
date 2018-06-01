@@ -46,8 +46,8 @@ ReactDOM.render(
 <Route path='/live-profile/posts/:userId' component={LiveProfilePosts}/>
 <Route exact path='/forums' component={Topics}/>
 <Route exact path='/forums/:topic' component={Posts}/>
-<Route path='/create/thread/:topic' component={requiredLoggedIn(CreateThread)}/>
-<Route path='/forums/edit-thread/:id' component={requiredLoggedIn(EditThread)}/>
+<Route path='/create/thread/:topic' component={CreateThread}/>
+<Route path='/forums/edit-thread/:id' component={EditThread}/>
 <Route path='/forums/:topic/:id' component={Thread}/>
 </Switch>
 <Footer/>

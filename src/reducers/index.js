@@ -6,5 +6,5 @@ import { toggleAlert } from './toggle_alert';
 export default combineReducers({
     user: fetchUser,
     posts: fetchUserPosts,
-    toggleAlert: toggleAlert 
+    toggleAlert: toggleAlert
 });

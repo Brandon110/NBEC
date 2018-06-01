@@ -6,7 +6,7 @@ export const fetchUser = (state = { loading: true }, action) => {
             return action.user;
 
         case FETCH_USER_ERROR:
-            return state;
+            return null;
 
         default:
             return state;

@@ -120,7 +120,7 @@ class SigninForm extends Component {
                     </div>
 
                     <div className='d-flex justify-content-between'>
-                        <button type='submit' className='btn btn-primary'>Sign in</button>
+                        <button type='submit' className='main-btn'>Sign in</button>
                         <NavLink to='/signup'>Sign up</NavLink>
                     </div>
                 </form>
