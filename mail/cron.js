@@ -1,6 +1,6 @@
 const cron = require('node-cron');
-const createMail = require('./createMail.js');
+const newsletter = require('./newsletter.js');
 
  module.exports = cron.schedule('00 12 * * Friday', () =>  {
-     createMail();
+     newsletter();
 });

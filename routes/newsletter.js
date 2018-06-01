@@ -1,5 +1,6 @@
 const subscriberCollection = require('../models/subscribers');
 const userCollection = require('../models/users');
+const welcomeEmail = require('../mail/welcome');
 
 module.exports = function (app) {
     app.get('/activity/subscribe', (req, res) => {
@@ -15,6 +16,9 @@ module.exports = function (app) {
 
                 subscriber.save(err => {
                     if (err) return res.send({ status: 'error', msg: 'email exists' });
+
+                    welcomeEmail(user.email);
+
                     return res.send({ status: 'success', msg: 'successful' });
                 });
             }
