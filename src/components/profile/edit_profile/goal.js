@@ -12,7 +12,8 @@ class Description extends Component {
                 onChange={(e) => this.props.onChange(e)}
                 className='form-control'
                 name='goal'
-                value={formValues['goal'] || user.goal || ''}>
+                placeholder={user.goal}
+                value={formValues['goal'] || ''}>
             </textarea>
         </div>
     }
