@@ -58,39 +58,44 @@ class Thread extends Component {
                 <div className='container'>
 
                     <h1 className='text-center mb-5'>{thread.title}</h1>
+                   
+                    <div className='d-flex wrap-on-resize white-background border-right border-left border-bottom border-top-blue grey-shadow-bottom'>
+                    
+                        <div className='d-flex flex-column align-items-center align-self-start center-on-resize p-2 mb-2' style={{ background: '#f2f2f2' }}>
+                            <img className='profile-img mb-2' src={thread.author.profileImg} />
+                            <div><NavLink to={'/live-profile/activity/' + thread.author.userId}>{thread.author.name}</NavLink></div>
+                            <div><small className='text-muted'>Born <strong>{thread.author.birthDate}</strong></small></div>
+                            <div className='d-flex align-items-center justify-content-between p-1 mt-1'>
+                                <small>
+                                    {
+                                        user && !user.loading ?
+                                            <ThreadReaction
+                                                id={thread._id}
+                                                fetchThread={this.fetchThread.bind(this)}
+                                                user={user}
+                                                thread={thread} />
+                                            :
+                                            false
+                                    }
+                                </small>
 
-                    <div className='d-flex flex-1 wrap-on-resize border white-background'>
-                        <div className='mr-2'>
-                            <div className='d-flex flex-column align-items-center p-2' style={{ background: '#f2f2f2' }}>
-                                <img className='profile-img' src={thread.author.profileImg} />
-                                <div><NavLink to={'/live-profile/activity/' + thread.author.userId}>{thread.author.name}</NavLink></div>
-                                <div><small className='text-muted'>Born <strong>{thread.author.birthDate}</strong></small></div>
-                                <div><small className='text-muted'>Posted <strong>{thread.datePosted}</strong></small></div>
+                                <small><Reactions likes={thread.likes} /></small>
+                            </div>
+                        </div>
+
+                        <section className='p-2'>
+                            <div className='border-bottom mb-2'>
+                                <NavLink to={'/live-profile/activity/' + thread.author.userId}>
+                                    <small>{thread.author.name}, </small>
+                                </NavLink>
+                                <small>Posted {thread.datePosted} </small>
                                 {
                                     thread.editDate ?
-                                        <div><small className='text-muted'><strong>{'(Edited ' + thread.editDate + ')'}</strong></small></div>
+                                        <small>{'(Edited ' + thread.editDate + ')'}</small>
                                         :
                                         false
                                 }
-                                <div className='d-flex align-items-center justify-content-between p-1 mt-1'>
-                                    <small>
-                                        {
-                                            user && !user.loading ?
-                                                <ThreadReaction
-                                                    id={thread._id}
-                                                    fetchThread={this.fetchThread.bind(this)}
-                                                    user={user}
-                                                    thread={thread} />
-                                                :
-                                                false
-                                        }
-                                    </small>
-
-                                    <small><Reactions likes={thread.likes} /></small>
-                                </div>
                             </div>
-                        </div>
-                        <section className='p-1'>
                             {Parser(thread.body)}
                         </section>
                     </div>

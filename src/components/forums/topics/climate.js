@@ -9,7 +9,7 @@ class Climate extends Component {
         super(props);
 
         this.state = {
-            posts: false
+            posts: null
         }
     }
 

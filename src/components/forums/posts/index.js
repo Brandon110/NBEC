@@ -48,29 +48,43 @@ class Posts extends Component {
         else {
             return posts.map((post, index) => {
                 return (
-                    <div key={index} className='d-flex text-center white-background'>
+                    <div key={index} className='d-flex text-center white-background h-100'>
 
-                        <div className='w-100 border d-flex flex-column justify-content-center'>
+                        <div className='w-100 border d-flex flex-column justify-content-center p-2'>
                             <NavLink to={'/forums/' + post.topic + '/' + post._id}>{post.title}</NavLink>
+
+                            <NavLink to={'/live-profile/activity/' + post.author.userId}>
+                                <small>{post.author.name}</small>
+                            </NavLink>
+
+                            <small className='text-muted'>
+                            Posted {post.datePosted}
+                            {
+                                post.editDate ?
+                                ' (Edited ' + post.editDate +')'
+                                :
+                                false
+                            }
+                            </small>
                         </div>
 
-                        <div className='w-25 border d-flex flex-column justify-content-center hide-on-resize'>
+                        <div className='w-25 border d-flex flex-column justify-content-center hide-on-resize p-2'>
                             <div><small>Replies {post.comments.length}</small></div>
                         </div>
 
-                        <div className='w-25 border d-flex flex-column justify-content-center hide-on-resize'>
+                        <div className='w-25 border d-flex flex-column justify-content-center hide-on-resize p-2'>
                             {
                                 post.comments[0] ?
                                     <div>
                                         <NavLink
                                             to={'/live-profile/activity/' + post.comments[0].userId}>
-                                            {post.comments[0].name}
+                                            <small>{post.comments[0].name}</small>
                                         </NavLink>
                                         <br />
                                         <small className='text-muted'>{post.comments[0].date}</small>
                                     </div>
                                     :
-                                    <small>No posts</small>
+                                    <small>No Posts</small>
                             }
                         </div>
                     </div>

@@ -9,7 +9,7 @@ class Pollution extends Component {
         super(props);
 
         this.state = {
-            posts: []
+            posts: null
         }
     }
 

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Parser from 'html-react-parser';
 import CommentReaction from './comment_reaction';
-import ReactQuill from 'react-quill';
 import Reactions from '../../toggle_reactions';
 import { NavLink, Link } from 'react-router-dom';
 import axios from 'axios';
@@ -20,8 +19,8 @@ class DisplayComments extends Component {
         this.setState({ activeIndex: index, editedComment: text });
     }
 
-    onChange(value) {
-        this.setState({ editedComment: value });
+    onChange(e) {
+        this.setState({ editedComment: e.target.value });
     }
 
     handleSubmit(e, comment) {
@@ -35,7 +34,7 @@ class DisplayComments extends Component {
             editedComment: editedComment
         })
             .then(response => {
-                this.props.fetchThread()
+                this.props.fetchThread();
                 this.cancelEdit();
             })
             .catch(err => {
@@ -76,7 +75,7 @@ class DisplayComments extends Component {
             <ul className='list-group'>
                 {
                     thread.comments.map((comment, index) => {
-                        return <li key={index} className='list-group-item p-0 m-0 d-flex align-items-center mb-2 wrap-on-resize'>
+                        return <li key={index} className='list-group-item d-flex p-0 m-0 align-items-center mb-4 wrap-on-resize border-top-blue grey-shadow-bottom'>
 
                             <div className='d-flex flex-column align-items-center align-self-start p-1 mr-2 h-100' style={{ flexShrink: '0', background: '#f2f2f2' }}>
                                 <NavLink to={'/live-profile/activity/' + comment.userId}>
@@ -126,12 +125,13 @@ class DisplayComments extends Component {
                             {
                                 index === activeIndex ?
                                     <form onSubmit={(e) => this.handleSubmit(e, comment)} className='w-100 p-3'>
-                                        <ReactQuill
-                                            value={this.state.editedComment}
+                                        <textarea
+                                            type='text'
                                             onChange={this.onChange.bind(this)}
-                                            theme={null}
-                                            className='border white-background'
-                                        />
+                                            className='form-control'
+                                            name='editedComment'
+                                            value={this.state.editedComment}>
+                                        </textarea>
                                         <button className='mr-2 mt-2 main-btn' type='submit'>Save</button>
                                         <button className='main-btn' onClick={this.cancelEdit.bind(this)}>Cancel</button>
                                     </form>

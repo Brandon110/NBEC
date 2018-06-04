@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactQuill from 'react-quill';
 import AlertMsg from '../../../alerts/forms';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -16,8 +15,8 @@ class AddComment extends Component {
         }
     }
 
-    onChange(value) {
-        this.setState({ comment: value });
+    onChange(e) {
+        this.setState({ comment: e.target.value });
     }
 
     handleSubmit(e) {
@@ -41,7 +40,7 @@ class AddComment extends Component {
                 }
 
                 Alert.alertClass = alertClass;
-           
+
                 switch (data.msg) {
                     case 'null comment':
                         Alert.msg = 'Please type your comment before submitting';
@@ -63,6 +62,7 @@ class AddComment extends Component {
 
     render() {
         let Alert = this.state.Alert;
+        let comment = this.state.comment;
 
         return (
             <div>
@@ -70,13 +70,14 @@ class AddComment extends Component {
                     Alert={Alert}
                 />
                 <form onSubmit={this.handleSubmit.bind(this)}>
-                    <ReactQuill
-                        value={this.state.comment}
+                    <textarea
+                        type='text'
                         onChange={this.onChange.bind(this)}
-                        placeholder='add a comment...'
-                        theme={null}
-                        className='border white-background'
-                    />
+                        className='form-control'
+                        name='comment'
+                        placeholder='Add a comment..'
+                        value={comment || ''}>
+                    </textarea>
                     <button className='main-btn mt-2' type='submit'>Comment</button>
                 </form>
             </div>

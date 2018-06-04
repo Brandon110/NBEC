@@ -4,37 +4,23 @@ import { bindActionCreators } from 'redux';
 import { showAlert } from '../../../actions/toggle_alert';
 import AlertMsg from '../../alerts/forms';
 import axios from 'axios';
-import ReactQuill from 'react-quill';
 
 class CreateThread extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            formValues: { text: '' },
+            formValues: {},
             Alert: null
         }
     }
 
-    handleTitleChange(e) {
+    onChange(e) {
         let formValues = this.state.formValues;
         let name = e.target.name;
         let value = e.target.value;
-
-        if (value.length <= 30) {
-            formValues[name] = value;
-
-            this.setState({ formValues });
-        }
-        else {
-            return false;
-        }
-    }
-
-    handleBodyChange(value) {
-        let formValues = this.state.formValues;
-
-        formValues.text = value;
+        
+        formValues[name] = value;
 
         this.setState({ formValues });
     }
@@ -46,7 +32,7 @@ class CreateThread extends Component {
 
         axios.post('/activity/create-thread', {
             title: formValues.title,
-            body: formValues.text,
+            body: formValues.body,
             topic: this.props.match.params.topic
         })
             .then(response => {
@@ -117,7 +103,7 @@ class CreateThread extends Component {
                                 type='text'
                                 className='form-control'
                                 name='title'
-                                onChange={this.handleTitleChange.bind(this)}
+                                onChange={this.onChange.bind(this)}
                                 value={formValues['title'] || ''}
                             />
                             <small className='text-muted'>
@@ -126,11 +112,13 @@ class CreateThread extends Component {
                         </div>
 
                         <div className='form-group'>
-                            <ReactQuill
-                                value={formValues['text']}
-                                onChange={this.handleBodyChange.bind(this)}
-                                className='white-background'
-                            />
+                            <textarea
+                                type='text'
+                                onChange={this.onChange.bind(this)}
+                                className='form-control'
+                                name='body'
+                                value={formValues['body'] || ''}>
+                            </textarea>
                         </div>
 
                         <button type='submit' className='btn btn-primary'>Create</button>

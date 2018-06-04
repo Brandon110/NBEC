@@ -27,8 +27,6 @@ class LastPost extends Component {
     }
 
     render() {
-        let post = this.props.posts;
-
         return this.renderLastPost();
     }
 }

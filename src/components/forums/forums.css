@@ -11,4 +11,8 @@
     .hide-on-resize {
         display: none!important;
     } 
+
+    .center-on-resize {
+        margin: 0 auto;
+    } 
 }

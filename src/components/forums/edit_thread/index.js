@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import ReactQuill from 'react-quill';
 
 class EditThread extends Component {
     constructor(props) {
@@ -24,9 +23,9 @@ class EditThread extends Component {
             });
     }
 
-    onChange(value) {
+    onChange(e) {
         let thread = this.state.thread;
-        thread.body = value;
+        thread.body = e.target.value;
         this.setState({ thread });
     }
 
@@ -81,11 +80,13 @@ class EditThread extends Component {
 
                             <form onSubmit={this.handleSubmit.bind(this)}>
                                 <div className='form-group'>
-                                    <ReactQuill
-                                        value={thread.body}
+                                    <textarea
+                                        type='text'
                                         onChange={this.onChange.bind(this)}
-                                        className='white-background'
-                                    />
+                                        className='form-control'
+                                        name='body'
+                                        value={thread.body}>
+                                    </textarea>
                                 </div>
                                 <div className='d-flex align-items-center justify-content-between'>
                                     <button
