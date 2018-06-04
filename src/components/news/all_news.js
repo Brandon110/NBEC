@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Moment from 'react-moment';
 import axios from 'axios';
 
 class AllNews extends Component {
@@ -44,7 +45,11 @@ class AllNews extends Component {
              </a>
                                     </div>
                                     <div className='card-footer'>
-                                        <p className='card-text'><small className='text-muted'>{article.publishedAt}</small></p>
+                                        <p className='card-text'>
+                                            <small className='text-muted'>
+                                                <Moment format='YYYY/MM/DD'>{article.publishedAt}</Moment>
+                                            </small>
+                                        </p>
                                     </div>
                                 </div>
                             )
