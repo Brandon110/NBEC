@@ -94,6 +94,11 @@ main {
     min-width: 30%;
 }
 
+.border-top-blue {
+    border-top: solid 4px #7f7fff;
+    border-radius: 5px; 
+}
+
 .loader {
     color: blue;
 }
@@ -107,5 +112,4 @@ main {
     .wrap-on-resize {
         flex-wrap: wrap;
     }
-
 }
