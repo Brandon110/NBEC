@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Moment from 'react-moment';
 import { NavLink, Link } from 'react-router-dom';
 
 class LastPost extends Component {
@@ -21,7 +22,11 @@ class LastPost extends Component {
             return <div>
                 <div><NavLink to={'/live-profile/activity/' + post.author.userId}>{post.author.name}</NavLink></div>
                 <div><small><NavLink to={'/forums/' + post.topic + '/' + post._id}>{post.title}</NavLink></small></div>
-                <div><small className='text-muted'>{post.datePosted}</small></div>
+                <div>
+                    <small className='text-muted'>
+                        <Moment format='YYYY/MM/DD'>{post.datePosted}</Moment>
+                    </small>
+                </div>
             </div>
         }
     }

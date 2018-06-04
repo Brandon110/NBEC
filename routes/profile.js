@@ -109,6 +109,7 @@ module.exports = function (app) {
             data.profileImg = user.profileImg;
             data.dateJoined = user.dateJoined;
             data.activity = user.activity;
+            data.goal = user.goal;
             data.userId = user.userId;
             data.fullName = user.firstName + ' ' + user.lastName;
 

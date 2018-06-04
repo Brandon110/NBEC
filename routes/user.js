@@ -29,7 +29,7 @@ module.exports = function (app) {
     });
 
     app.get('/user/posts', (req, res) => {
-        forumsCollection.find({ 'author.userId': req.user }, (err, posts) => {
+        forumsCollection.find({ 'author.userId': req.user }).sort({'datePosted': '-1'}).exec((err, posts) => {
             if (err) return err;
 
             return res.send(posts);

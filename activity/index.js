@@ -1,6 +1,6 @@
 const userCollection = require('../models/users');
 
-const addActivity = (action, url, title, date, req) => {
+const addActivity = (action, url, title, req) => {
     userCollection.findOne({ 'userId': req.user }, (err, user) => {
         if (err) return err;
 
@@ -9,7 +9,6 @@ const addActivity = (action, url, title, date, req) => {
         newActivity.action = action;
         newActivity.url = url;
         newActivity.title = title;
-        newActivity.date = date;
         
         user.activity.unshift(newActivity);
 

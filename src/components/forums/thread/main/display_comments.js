@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Parser from 'html-react-parser';
 import CommentReaction from './comment_reaction';
 import Reactions from '../../toggle_reactions';
+import Moment from 'react-moment';
 import { NavLink, Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -82,7 +83,9 @@ class DisplayComments extends Component {
                                     <small>{comment.name}</small>
                                 </NavLink>
                                 <small className='text-muted'>
-                                    {comment.date}
+                                    <Moment format='YYYY/MM/DD'>
+                                        {comment.date}
+                                    </Moment>
                                 </small>
 
                                 <div className='d-flex align-items-center'>

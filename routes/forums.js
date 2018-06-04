@@ -1,5 +1,4 @@
 const forumsCollection = require('../models/forums');
-const getTodaysDate = require('../helper_functions/getTodaysDate');
 const userCollection = require('../models/users');
 const activity = require('../activity/index');
 
@@ -34,8 +33,7 @@ module.exports = function (app) {
                     topic: topic,
                     title: title,
                     body: body,
-                    author: { name: user.firstName + ' ' + user.lastName, userId: user.userId },
-                    datePosted: getTodaysDate(),
+                    author: { name: user.firstName + ' ' + user.lastName, userId: user.userId }
                 });
 
                 thread.save(err => {
@@ -43,9 +41,8 @@ module.exports = function (app) {
                     const action = 'created thread';
                     const url = '/forums/' + thread.topic + '/' + thread._id;
                     const title = thread.title;
-                    const date = getTodaysDate();
 
-                    activity(action, url, title, date, req);
+                    activity(action, url, title, req);
 
                     res.send({ status: 'success', msg: 'successful', id: thread._id });
                 });
@@ -58,15 +55,14 @@ module.exports = function (app) {
 
         if (req.user === thread.author.userId) {
             forumsCollection.findOneAndUpdate({ '_id': thread._id },
-                { $set: { 'body': thread.body, editDate: getTodaysDate() } }, { new: true }, (err, updated) => {
+                { $set: { 'body': thread.body, editDate: new Date() } }, { new: true }, (err, updated) => {
                     if (err) return err;
 
                     const action = 'edited thread';
                     const url = '/forums/' + thread.topic + '/' + thread._id;
                     const title = thread.title;
-                    const date = getTodaysDate();
 
-                    activity(action, url, title, date, req);
+                    activity(action, url, title, req);
 
                     res.send({ status: 'success', id: thread._id });
                 });
@@ -126,7 +122,6 @@ module.exports = function (app) {
                 obj.userId = req.user;
                 obj.name = user.firstName + ' ' + user.lastName;
                 obj.text = comment;
-                obj.date = getTodaysDate();
 
                 forumsCollection.findOneAndUpdate({ '_id': threadId },
                     { $push: { 'comments': obj } }, { new: true },
@@ -136,9 +131,8 @@ module.exports = function (app) {
                         const action = 'posted comment in';
                         const url = '/forums/' + updated.topic + '/' + updated._id;
                         const title = updated.title;
-                        const date = obj.date;
 
-                        activity(action, url, title, date, req);
+                        activity(action, url, title, req);
 
                         return res.send({ status: 'success', msg: 'successful' });
                     });
@@ -176,9 +170,8 @@ module.exports = function (app) {
                 const action = 'liked thread';
                 const url = '/forums/' + updated.topic + '/' + updated._id;
                 const title = updated.title;
-                const date = getTodaysDate();
 
-                activity(action, url, title, date, req);
+                activity(action, url, title, req);
 
                 res.send({ status: 'success' });
             });
@@ -226,9 +219,8 @@ module.exports = function (app) {
                     const action = 'liked comment in';
                     const url = '/forums/' + thread.topic + '/' + thread._id;
                     const title = thread.title;
-                    const date = getTodaysDate();
 
-                    activity(action, url, title, date, req);
+                    activity(action, url, title, req);
 
                     res.send({ status: 'success' });
                 });

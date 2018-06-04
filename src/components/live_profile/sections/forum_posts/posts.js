@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Moment from 'react-moment';
 import { NavLink, Link } from 'react-router-dom';
 
 class ForumPosts extends Component {
@@ -11,10 +12,24 @@ class ForumPosts extends Component {
         else {
             return posts.map((post, index) => {
                 return <li key={index} className='list-group-item'>
-                    <div className='d-flex align-items-center'>
-                            <small className='text-muted mr-1'>{post.datePosted} {post.editDate ? '(Edited ' + post.editDate + ')' : ''}</small>
-                            <NavLink to={'/forums/' + post.topic + '/' + post._id}>{post.title}</NavLink>
-                    </div>
+                        <small className='mr-1'>
+                            <Moment
+                                format="YYYY/MM/DD">
+                                {post.datePosted}
+                            </Moment>
+                        </small>
+                        {
+                            post.editDate ?
+                                <small className='mr-1'>
+                                    (edited
+                                    <Moment format='YYYY/MM/DD'>
+                                        {post.editDate}
+                                    </Moment>)
+                                </small>
+                                :
+                                false
+                        }
+                        <NavLink to={'/forums/' + post.topic + '/' + post._id}>{post.title}</NavLink>
                 </li>
             })
         }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Moment from 'react-moment';
 import { NavLink, Link } from 'react-router-dom';
 
 class ProfileInfo extends Component {
@@ -29,8 +30,12 @@ class ProfileInfo extends Component {
                 }
 
                 <div className='mt-3 p-3 d-flex justify-content-between flex-wrap'>
-                    <small className='text-muted'>Born <strong>{user.birthDate}</strong></small>
-                    <small className='text-muted'>Joined <strong>{user.dateJoined}</strong></small>
+                    <small className='text-muted'>
+                        Born <strong><Moment format='YYYY/MM/DD'>{user.birthDate}</Moment></strong>
+                    </small>
+                    <small className='text-muted'>
+                        Joined <strong><Moment format='YYYY/MM/DD'>{user.dateJoined}</Moment></strong>
+                    </small>
                 </div>
             </div>
         )

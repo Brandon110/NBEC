@@ -6,6 +6,7 @@ import AddComment from './main/add_comment';
 import DisplayComments from './main/display_comments';
 import ThreadReaction from './main/thread_reaction';
 import Reactions from '../toggle_reactions';
+import Moment from 'react-moment';
 import { NavLink, Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -58,13 +59,17 @@ class Thread extends Component {
                 <div className='container'>
 
                     <h1 className='text-center mb-5'>{thread.title}</h1>
-                   
+
                     <div className='d-flex wrap-on-resize white-background border-right border-left border-bottom border-top-blue grey-shadow-bottom'>
-                    
+
                         <div className='d-flex flex-column align-items-center align-self-start center-on-resize p-2 mb-2' style={{ background: '#f2f2f2' }}>
                             <img className='profile-img mb-2' src={thread.author.profileImg} />
                             <div><NavLink to={'/live-profile/activity/' + thread.author.userId}>{thread.author.name}</NavLink></div>
-                            <div><small className='text-muted'>Born <strong>{thread.author.birthDate}</strong></small></div>
+                            <div>
+                                <small className='text-muted'>
+                                    Born <strong><Moment format='YYYY/MM/DD'>{thread.author.birthDate}</Moment></strong>
+                                </small>
+                            </div>
                             <div className='d-flex align-items-center justify-content-between p-1 mt-1'>
                                 <small>
                                     {
@@ -88,15 +93,26 @@ class Thread extends Component {
                                 <NavLink to={'/live-profile/activity/' + thread.author.userId}>
                                     <small>{thread.author.name}, </small>
                                 </NavLink>
-                                <small>Posted {thread.datePosted} </small>
+                                <small>
+                                    Posted {' '}
+                                    <Moment
+                                        format="YYYY/MM/DD">
+                                        {thread.datePosted}
+                                    </Moment>
+                                </small>
                                 {
                                     thread.editDate ?
-                                        <small>{'(Edited ' + thread.editDate + ')'}</small>
+                                        <small>
+                                            {' '} (edited {' '}
+                                            <Moment format='YYYY/MM/DD'>
+                                                {thread.editDate}
+                                            </Moment>)
+                                        </small>
                                         :
                                         false
                                 }
                             </div>
-                            {Parser(thread.body)}
+                            <p>{thread.body}</p>
                         </section>
                     </div>
 

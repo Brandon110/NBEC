@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { NavLink, Link } from 'react-router-dom';
+import Moment from 'react-moment';
 import Parser from 'html-react-parser';
 
 class Activities extends Component {
@@ -36,7 +37,11 @@ class Activities extends Component {
                                 className='list-group-item activity-wrapper'>
                                 <div className='d-flex justify-content-between'>
                                     <div>
-                                        <small>{activity.date}</small> {' '}
+                                        <small>
+                                            <Moment format='YYYY/MM/DD'>
+                                                {activity.date}
+                                            </Moment>
+                                        </small> {' '}
                                         {activity.action} {' '}
                                         <NavLink to={activity.url}>{activity.title}</NavLink>
                                     </div>

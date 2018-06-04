@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchUser } from '../../../actions/fetch_user';
+import Moment from 'react-moment';
 import axios from 'axios';
 
 class Posts extends Component {
@@ -58,14 +59,14 @@ class Posts extends Component {
                             </NavLink>
 
                             <small className='text-muted'>
-                            Posted {post.datePosted}
+                                Posted <Moment format='YYYY/MM/DD'>{post.datePosted}</Moment>
+                            </small>
                             {
                                 post.editDate ?
-                                ' (Edited ' + post.editDate +')'
-                                :
-                                false
+                                    <small><Moment format='YYYY/MM/DD'>{post.editDate}</Moment></small>
+                                    :
+                                    false
                             }
-                            </small>
                         </div>
 
                         <div className='w-25 border d-flex flex-column justify-content-center hide-on-resize p-2'>
@@ -81,13 +82,15 @@ class Posts extends Component {
                                             <small>{post.comments[0].name}</small>
                                         </NavLink>
                                         <br />
-                                        <small className='text-muted'>{post.comments[0].date}</small>
+                                        <small className='text-muted'>
+                                            <Moment format='YYYY/MM/DD'>{post.comments[0].date}</Moment>
+                                        </small>
                                     </div>
                                     :
                                     <small>No Posts</small>
                             }
                         </div>
-                    </div>
+                    </div >
                 )
             })
         }

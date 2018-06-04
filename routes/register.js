@@ -1,6 +1,5 @@
 const userSchema = require('../models/users');
 const validateEmail = require('../validators/validate_email');
-const getTodaysDate = require('../helper_functions/getTodaysDate');
 const uniqId = require('uniqid');
 
 module.exports = function (app) {
@@ -49,8 +48,7 @@ module.exports = function (app) {
                     lastName: lastName,
                     password: password,
                     birthDate: birthDate,
-                    userId: uniqId(),
-                    dateJoined: getTodaysDate()
+                    userId: uniqId()
                 });
 
                 user.save(err => {
