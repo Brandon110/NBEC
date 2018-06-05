@@ -45,38 +45,31 @@ class Headlines extends Component {
     renderHeadlines() {
         let topHeadlines = this.state.topHeadlines;
         let index = this.state.index;
+        let headline = topHeadlines.articles[index];
 
-        if (topHeadlines.articles.length !== 0) {
+        if (topHeadlines.length !== 0) {
             return (
-                <div className='white-background p-3 border'>
-                    <div className='row'>
-                        <div className='col-md-4'>
-                            <img className='headline-img' src={topHeadlines.articles[index].urlToImage} />
-                        </div>
-                        <div className='col-md-8'>
-                            <h5>{topHeadlines.articles[index].title}</h5>
-                            <article>{topHeadlines.articles[index].description}</article>
-                            <p>{topHeadlines.articles[index].author}</p>
-                            <a
-                                href={topHeadlines.articles[index].url}
-                                target='__blank'>
-                                View Article
-            </a>
-                        </div>
-                    </div>
-                    <div className='d-flex justify-content-center mt-3'>
+                <div className="card mb-2">
+                    <img className="card-img-top" src={headline.urlToImage} alt={headline.title} />
+                    <div className="card-body">
+                        <h5 className="card-title">{headline.title}</h5>
+                        <p className="card-text">{headline.description}</p>
+                        <p className="card-text"><a href={headline.url}>View</a></p>
+
+                      <div className='text-center'>
                         <button
                             disabled={index === 0}
                             onClick={(e) => this.decrementIndex(e)}
                             className='btn headline-navigation-btn transparent-btn'>
                             Previous
-            </button>
+                        </button>
                         <button
                             disabled={index + 1 === topHeadlines.articles.length || topHeadlines.articles.length === 0}
                             onClick={(e) => this.incrementIndex(e)}
                             className='btn headline-navigation-btn transparent-btn'>
                             Next
-            </button>
+                        </button>
+                        </div>
                     </div>
                 </div>
             )
