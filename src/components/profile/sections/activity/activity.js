@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { NavLink, Link } from 'react-router-dom';
 import Moment from 'react-moment';
-import Parser from 'html-react-parser';
 
 class Activities extends Component {
     componentDidMount() {

@@ -5,7 +5,6 @@ import { fetchUser } from '../../../../actions/fetch_user';
 import ProfileNav from '../../main/profile_navigation';
 import ProfileInfo from '../../main/profile_info';
 import Activity from './activity';
-import ProfileSidebar from '../../main/profile_sidebar';
 import '../../profile.css';
 
 class ProfilePage extends Component {
