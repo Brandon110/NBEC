@@ -27,7 +27,7 @@ module.exports = function (app) {
                 return res.send({ status: 'error', msg: 'null lastname' });
             }
             else if (!birthDate) {
-                return res.send({ status: 'error', msg: 'null brithdate' });
+                return res.send({ status: 'error', msg: 'null birthdate' });
             }
             else if (!password) {
                 return res.send({ status: 'error', msg: 'null password' });
