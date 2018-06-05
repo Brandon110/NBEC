@@ -113,7 +113,7 @@ module.exports = function (app) {
             data.userId = user.userId;
             data.fullName = user.firstName + ' ' + user.lastName;
 
-            forumCollection.find({ 'author.userId': user.userId }, (err, posts) => {
+            forumCollection.find({ 'author.userId': user.userId }).sort({'datePosted': -1}).exec((err, posts) => {
                 if (err) return err;
 
                 data.posts = posts;
