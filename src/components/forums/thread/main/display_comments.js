@@ -138,7 +138,7 @@ class DisplayComments extends Component {
                                         <button className='main-btn' onClick={this.cancelEdit.bind(this)}>Cancel</button>
                                     </form>
                                     :
-                                    <section className='p-3'>{comment.text}</section>
+                                    <article className='p-3'>{comment.text}</article>
                             }
                         </li>
                     })

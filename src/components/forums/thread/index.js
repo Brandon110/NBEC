@@ -87,7 +87,7 @@ class Thread extends Component {
                             </div>
                         </div>
 
-                        <section className='p-2'>
+                        <div className='p-2'>
                             <div className='border-bottom mb-2'>
                                 <NavLink to={'/live-profile/activity/' + thread.author.userId}>
                                     <small>{thread.author.name}, </small>
@@ -111,8 +111,8 @@ class Thread extends Component {
                                         false
                                 }
                             </div>
-                            <p>{thread.body}</p>
-                        </section>
+                            <article>{thread.body}</article>
+                        </div>
                     </div>
 
                     <div className='mt-5'>
