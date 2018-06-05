@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Parser from 'html-react-parser';
 import Alert from '../../alerts/no_data';
 import AddComment from './main/add_comment';
 import DisplayComments from './main/display_comments';

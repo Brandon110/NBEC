@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Parser from 'html-react-parser';
 import CommentReaction from './comment_reaction';
 import Reactions from '../../toggle_reactions';
 import Moment from 'react-moment';
@@ -139,7 +138,7 @@ class DisplayComments extends Component {
                                         <button className='main-btn' onClick={this.cancelEdit.bind(this)}>Cancel</button>
                                     </form>
                                     :
-                                    <section className='p-3'>{Parser(comment.text)}</section>
+                                    <section className='p-3'>{comment.text}</section>
                             }
                         </li>
                     })
