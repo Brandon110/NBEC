@@ -4,7 +4,7 @@ class NoRoute extends Component {
     render() {
         return (
             <main>
-                <div className='container'>
+                <div className='container mt-5'>
                     <div className='alert alert-info text-center'>
                         <span>This page doesn't seem to exist</span>
                     </div>
