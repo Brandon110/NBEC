@@ -75,7 +75,7 @@ class DisplayComments extends Component {
             <ul className='list-group'>
                 {
                     thread.comments.map((comment, index) => {
-                        return <li key={index} className='list-group-item d-flex p-0 m-0 align-items-center mb-4 wrap-on-resize border-top-blue grey-shadow-bottom'>
+                        return <li key={index} className='list-group-item d-flex p-0 m-0 align-items-center mb-4 wrap-on-resize border-top-green grey-shadow-bottom'>
 
                             <div className='d-flex flex-column align-items-center align-self-start p-1 mr-2 h-100' style={{ flexShrink: '0', background: '#f2f2f2' }}>
                                 <NavLink to={'/live-profile/activity/' + comment.userId}>
@@ -138,7 +138,7 @@ class DisplayComments extends Component {
                                         <button className='main-btn' onClick={this.cancelEdit.bind(this)}>Cancel</button>
                                     </form>
                                     :
-                                    <article className='p-3'>{comment.text}</article>
+                                    <p className='p-3'>{comment.text}</p>
                             }
                         </li>
                     })

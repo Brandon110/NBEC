@@ -59,7 +59,7 @@ class Thread extends Component {
 
                     <h1 className='text-center mb-5'>{thread.title}</h1>
 
-                    <div className='d-flex wrap-on-resize white-background border-right border-left border-bottom border-top-blue grey-shadow-bottom'>
+                    <div className='d-flex wrap-on-resize white-background border-right border-left border-bottom border-top-green grey-shadow-bottom'>
 
                         <div className='d-flex flex-column align-items-center align-self-start center-on-resize p-2 mb-2' style={{ background: '#f2f2f2' }}>
                             <img className='profile-img mb-2' src={thread.author.profileImg} />
@@ -111,7 +111,7 @@ class Thread extends Component {
                                         false
                                 }
                             </div>
-                            <article>{thread.body}</article>
+                            <p>{thread.body}</p>
                         </div>
                     </div>
 
