@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const MemoryStore = require('session-memory-store')(session);
 const passport = require('passport');
+const favicon = require('express-favicon');
 const express = require('express');
 require('dotenv').config();
 
@@ -35,6 +36,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(express.static(__dirname));
+
+app.use(favicon(__dirname + '/images/logo.png'));
 
 require('./apis/google_news_api')(app);
 require('./routes/newsletter')(app);
