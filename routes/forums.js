@@ -96,9 +96,12 @@ module.exports = function (app) {
 
                     data.author = {};
                     data.author.name = thread.author.name;
-                    data.author.profileImg = user.profileImg;
                     data.author.userId = thread.author.userId;
-                    data.author.birthDate = user.birthDate;
+
+                    if (user) {
+                        data.author.birthDate = user.birthDate;
+                        data.author.profileImg = user.profileImg;
+                    }
 
                     res.send(data)
                 });
