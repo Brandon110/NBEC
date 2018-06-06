@@ -99,8 +99,8 @@ main {
     min-width: 30%;
 }
 
-.border-top-blue {
-    border-top: solid 4px #7f7fff;
+.border-top-green {
+    border-top: solid 4px #99ff99;
     border-radius: 5px; 
 }
 
