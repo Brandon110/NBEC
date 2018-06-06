@@ -50,7 +50,7 @@ class DropdownHeader extends Component {
         return (
             <nav className='dropdown-nav'>
                 <div className='d-flex justify-content-between align-items-center'>
-                    <a href='/' className='header-title ml-3'>NBEC <i className="fab fa-envira"></i></a>
+                    <a href='/' className='header-title'><img src='/images/logo2.png' /></a>
                     <button
                         onClick={this.toggleDropDown.bind(this)}
                         className='mr-3 dropdown-icon transparent-btn'>

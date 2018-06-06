@@ -15,20 +15,15 @@ nav {
 
 .header-link {
     text-decoration: none;
-    padding: 11px 16px;
     color: grey;
+    margin-right: 30px;
 }
 
 .header-link:hover {
-    background-color: #e5e5ff;
     color: grey;
     text-decoration: none;
 }
-
-.active {
-    background-color: silver !important;
-}
-
+ 
 .dropdown-nav {
     display: none;
 }

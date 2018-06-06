@@ -24,16 +24,16 @@ class MainHeader extends Component {
     render() {
         return (
             <nav className='main-nav'>
-                <div className='d-flex align-items-center justify-content-between grey-shadow-bottom p-2 list-unstyled'>
+                <div className='d-flex align-items-center justify-content-between border-bottom p-2'>
                     <div className='ml-5'>
-                        <a href='/' className='header-title'>NBEC <i className="fab fa-envira"></i></a>
+                        <a href='/' className='header-title'><img src='/images/logo2.png'/></a>
                     </div>
                     {this.renderMainHeaderMenu()}
                 </div>
 
                 <div className='d-flex grey-shadow-bottom list-unstyled p-2'>
-                    <div>
-                        <NavLink exact to='/' className='header-link ml-5' activeClassName='active'>Home</NavLink>
+                    <div className='ml-5'>
+                        <NavLink exact to='/' className='header-link' activeClassName='active'>Home</NavLink>
                     </div>
                     <div>
                         <NavLink className='header-link' activeClassName='active' to='/newsletter'>Newsletter</NavLink>
