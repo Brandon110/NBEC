@@ -6,14 +6,13 @@ class HomePage extends Component {
     render() {
         return (
             <div>
-                <main>
-                    <div className='pt-5 pb-5 text-center' style={{ backgroundColor: '#b2b2ff' }}>
+                <main className='white-background'>
+                    <div className='pt-5 pb-5 text-center grey-shadow-bottom'>
                         <img src='/images/logo.png' />
                         <h1><strong>New brunswick Environmental Community</strong></h1>
-                        <p><small>connect with your environment</small></p>
                     </div>
 
-                    <div className='p-5 white-background'>
+                    <div className='p-5 mt-5'>
                         <div className='pb-5 pt-5 text-center border-grey-bottom'>
                             <img className='small-icon' src='/images/news.png' />
                             <p><NavLink to='/news'>News</NavLink></p>
