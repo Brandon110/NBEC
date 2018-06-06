@@ -4,7 +4,7 @@ class NoData extends Component {
     render() {
         return (
             <main>
-                <div className='container'>
+                <div className='container mt-5'>
                     <div className='text-center alert alert-info'>
                         <span>{this.props.msg}</span>
                     </div>

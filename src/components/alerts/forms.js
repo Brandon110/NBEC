@@ -14,7 +14,7 @@ class AlertMsg extends Component {
         let toggleAlert = this.props.toggleAlert;
 
         return Alert && toggleAlert.display ?
-            <div className={'alerts text-center ' + Alert.alertClass}>
+            <div className={'mt-5 alerts text-center ' + Alert.alertClass}>
                 <span>{Alert.msg}</span>
                 <button onClick={this.hideAlert.bind(this)} className='btn hide-alert-btn'>&#10006;</button>
             </div>
