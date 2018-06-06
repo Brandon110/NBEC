@@ -1,26 +1,12 @@
 .newsletter-description-wrapper {
      padding: 50px 5px 50px 5px;
-     background-color: #7f7fff;
+     border: solid 1px #99ff99;
+     background-color: white;
+     color: grey;
 }
-
-.newsletter-description {
-    margin: 0 auto;
-    color: white;
-}
-
+ 
 .fa-envelope-square {
     font-size: 120px;
     margin: 0 auto;
-    color: white;
-}
- 
-@media (max-width: 500px) {
- 
- .newsletter-description-wrapper {
-     text-align: center;
- }
-    
-.fa-envelope-square {
-    margin-bottom: 40px;
-}    
+    color: grey;
 }
