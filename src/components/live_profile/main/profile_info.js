@@ -17,7 +17,7 @@ class ProfileInfo extends Component {
                 {
                     user.goal ?
                         <div className='mt-3 p-3 d-flex justify-content-center'>
-                            <span style={{ color: 'grey' }}>{user.goal}</span>
+                            <p style={{ color: 'grey' }}>{user.goal}</p>
                         </div>
                         :
                         false

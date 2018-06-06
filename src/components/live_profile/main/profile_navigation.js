@@ -5,9 +5,9 @@ class LiveProfileNavigation extends Component {
     render() {
         let user = this.props.user;
 
-        return <nav className='d-flex justify-content-start align-items-center mt-2 mb-2'>
+        return <nav className='d-flex align-items-center mt-2 mb-2 profile-header'>
             <NavLink
-                className='header-link'
+                className='ml-3 header-link'
                 exact to={'/live-profile/activity/' + user.userId}
                 activeClassName='active'>
                 Activity
