@@ -11,7 +11,7 @@ class Topics extends Component {
     render() {
         return (
             <main>
-                <div className='container mt-2 mb-2'>
+                <div className='container mt-5 mb-5'>
 
                     <div className='border'>
                         <div className='d-flex align-items-center text-center topic-section-title p-1'>

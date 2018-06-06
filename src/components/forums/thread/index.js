@@ -55,7 +55,7 @@ class Thread extends Component {
         }
         else {
             return (
-                <div className='container'>
+                <div className='container mt-5'>
 
                     <h1 className='text-center mb-5'>{thread.title}</h1>
 

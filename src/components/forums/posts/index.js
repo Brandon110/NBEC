@@ -101,7 +101,7 @@ class Posts extends Component {
 
         return (
             <main>
-                <div className='container mt-2 mb-2'>
+                <div className='container mt-5 mb-5'>
                     {
                         user && !user.loading ?
                             <NavLink
