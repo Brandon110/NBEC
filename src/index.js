@@ -17,13 +17,13 @@ import Posts from './components/forums/posts';
 import CreateThread from './components/forums/create_thread';
 import EditThread from './components/forums/edit_thread';
 import Thread from './components/forums/thread';
+import NoRoute from './components/no_route_matches';
 import requiredLoggedIn from './components/HOC/authentication_required';
 import { BrowserRouter, Switch, Route, Link, hashHistory } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './reducers/index';
 import thunk from 'redux-thunk';
-import '../node_modules/react-quill/dist/quill.snow.css';
 import './components/styles/main.css';
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
@@ -49,6 +49,7 @@ ReactDOM.render(
 <Route path='/create/thread/:topic' component={CreateThread}/>
 <Route path='/forums/edit-thread/:id' component={EditThread}/>
 <Route path='/forums/:topic/:id' component={Thread}/>
+<Route component={NoRoute}/>
 </Switch>
 <Footer/>
 </div>
