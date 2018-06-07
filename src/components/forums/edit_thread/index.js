@@ -75,7 +75,7 @@ class EditThread extends Component {
             <main>
                 {
                     thread ?
-                        <div className='container'>
+                        <div className='container mt-5 mb-5'>
                             <h1 className='text-center mb-3'>{thread.title}</h1>
 
                             <form onSubmit={this.handleSubmit.bind(this)}>
