@@ -7,13 +7,14 @@ class HomePage extends Component {
         return (
             <div>
                 <main className='white-background'>
-                    <div className='pt-5 pb-5 text-center grey-shadow-bottom'>
+                    <div className='pt-5 pb-5 text-center' style={{backgroundColor: '#4c4cff'}}>
                         <img src='/images/logo.png' />
                         <h1><strong>New brunswick Environmental Community</strong></h1>
+                        <p><small>Local environmental community</small></p>
                     </div>
 
-                    <div className='p-5 mt-5'>
-                        <div className='pb-5 pt-5 text-center border-grey-bottom'>
+                    <div className='mt-5 mb-5'>
+                        <div className='p-5 text-center border-grey-bottom'>
                             <img className='small-icon' src='/images/news.png' />
                             <p><NavLink to='/news'>News</NavLink></p>
                             <p><small className='text-muted'>Explore news relating to the environment</small></p>
@@ -25,7 +26,6 @@ class HomePage extends Component {
                             <p><small className='text-muted'>Engage in environmnetal discussions</small></p>
                         </div>
 
-
                         <div className='p-5 text-center'>
                             <img className='small-icon' src='/images/newsletter.png'
                             />
@@ -35,8 +35,8 @@ class HomePage extends Component {
                     </div>
                 </main>
 
-                <div className='pb-5 mt-5'>
-                    <h5 className='text-center p-5'>Sign up to perticapate in the community</h5>
+                <div className='mb-5'>
+                    <h5 className='text-center m-5'>Sign up to perticapate in the community</h5>
                     <div className='form-wrapper'>
                         <SignupForm />
                     </div>
