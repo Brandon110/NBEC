@@ -1,5 +1,6 @@
-nav {
+nav a {
     font-family: sans-serif;
+    color: grey;
 }
 
 .header-title {
@@ -30,6 +31,10 @@ nav {
  
 .dropdown-icon {
     font-size: 25px;
+}
+
+.fa-sign-out-alt {
+    color: brown;
 }
 
 @media (max-width: 700px) {
