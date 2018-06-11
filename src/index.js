@@ -39,10 +39,10 @@ ReactDOM.render(
 <Route path='/newsletter' component={NewsLetter}/>
 <Route path='/signup' component={RegisterPage}/>
 <Route path='/signin' component={SigninPage}/>
-<Route exact path='/profile/activity' component={requiredLoggedIn(ProfileActivity)}/>
+<Route path='/profile/activity' component={requiredLoggedIn(ProfileActivity)}/>
 <Route path='/profile/posts' component={requiredLoggedIn(ProfilePosts)}/>
 <Route path='/profile/update-profile' component={requiredLoggedIn(EditProfile)}/>
-<Route exact path='/live-profile/activity/:userId' component={LiveProfileActivity}/>
+<Route path='/live-profile/activity/:userId' component={LiveProfileActivity}/>
 <Route path='/live-profile/posts/:userId' component={LiveProfilePosts}/>
 <Route exact path='/forums' component={Topics}/>
 <Route exact path='/forums/:topic' component={Posts}/>
