@@ -17,6 +17,7 @@ class NewsLetterForm extends Component {
 
     handleSubscribe() {
         axios.get('/activity/subscribe').then(function (response) {
+            this.props.showAlert();
             window.scrollTo(0, 0);
 
             let data = response.data;
@@ -61,7 +62,7 @@ class NewsLetterForm extends Component {
                 />
                 <div className='d-flex flex-column'>
                     <button onClick={this.handleSubscribe.bind(this)} className='main-btn'>Subscribe</button>
-                    <small className='text-muted text-center mt-3'>You may unsescribe at any time.</small>
+                    <small className='text-muted text-center mt-3'>You may unsubscribe at any time.</small>
                 </div>
             </div>
         )

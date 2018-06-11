@@ -36,7 +36,7 @@ class HomePage extends Component {
                 </main>
 
                 <div className='mb-5'>
-                    <h5 className='text-center m-5'>Sign up to perticapate in the community</h5>
+                    <h5 className='text-center m-5'>Sign up to participate in the community</h5>
                     <div className='form-wrapper'>
                         <SignupForm />
                     </div>

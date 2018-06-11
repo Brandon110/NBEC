@@ -9,7 +9,7 @@ class MainHeader extends Component {
             return false;
         }
         else if (user) {
-            return <div className='mr-5 d-flex'>
+            return <div className='d-flex'>
                 <NavLink
                     to='/profile/activity'
                     className='mr-3'
@@ -22,7 +22,7 @@ class MainHeader extends Component {
             </div>
         }
         else {
-            return <div className='mr-5'>
+            return <div>
                 <NavLink to='/signup' activeClassName='active'>Join</NavLink>/<NavLink to='/signin'>Sign in</NavLink>
             </div>
         }
@@ -31,25 +31,29 @@ class MainHeader extends Component {
     render() {
         return (
             <nav className='main-nav'>
-                <div className='d-flex align-items-center justify-content-between border-bottom p-2'>
-                    <div className='ml-5'>
-                        <a href='/' className='header-title'><img src='/images/logo2.png' /></a>
+                <div className='border-bottom p-2'>
+                    <div className='container d-flex align-items-center justify-content-between'>
+                        <div>
+                            <a href='/' className='header-title'><img src='/images/logo2.png' /></a>
+                        </div>
+                        {this.renderMainHeaderMenu()}
                     </div>
-                    {this.renderMainHeaderMenu()}
                 </div>
 
-                <div className='d-flex grey-shadow-bottom list-unstyled p-2'>
-                    <div className='ml-5'>
-                        <NavLink exact to='/' className='header-link' activeClassName='active'>Home</NavLink>
-                    </div>
-                    <div>
-                        <NavLink className='header-link' activeClassName='active' to='/newsletter'>Newsletter</NavLink>
-                    </div>
-                    <div>
-                        <NavLink className='header-link' activeClassName='active' to='/forums'>Forums</NavLink>
-                    </div>
-                    <div>
-                        <NavLink className='header-link' activeClassName='active' to='/news'>News</NavLink>
+                <div className='grey-shadow-bottom p-2'>
+                    <div className='container d-flex align-items-center'>
+                        <div>
+                            <NavLink exact to='/' className='header-link' activeClassName='active'>Home</NavLink>
+                        </div>
+                        <div>
+                            <NavLink className='header-link' activeClassName='active' to='/newsletter'>Newsletter</NavLink>
+                        </div>
+                        <div>
+                            <NavLink className='header-link' activeClassName='active' to='/forums'>Forums</NavLink>
+                        </div>
+                        <div>
+                            <NavLink className='header-link' activeClassName='active' to='/news'>News</NavLink>
+                        </div>
                     </div>
                 </div>
             </nav>

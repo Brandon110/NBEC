@@ -63,7 +63,7 @@ class Posts extends Component {
                             </small>
                             {
                                 post.editDate ?
-                                    <small><Moment format='YYYY/MM/DD'>{post.editDate}</Moment></small>
+                                    <small className='text-muted'>(Edited <Moment format='YYYY/MM/DD'>{post.editDate}</Moment>)</small>
                                     :
                                     false
                             }
