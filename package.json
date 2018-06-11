@@ -7,6 +7,10 @@
     "webpack": "webpack",
     "start": "node server.js"
   },
+  "engines": {
+     "node": "v8.11.1",
+     "npm": "5.6.0"
+  }, 
   "author": "Brandon Blackwell",
   "license": "ISC",
   "dependencies": {
